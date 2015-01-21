@@ -53,7 +53,7 @@ public class RooDriveTrain {
 		return motorPower;
 	}
 	
-	void getForwardMagnitudeFromFieldwise (double x1, double y1, double a){
+	double getForwardMagnitudeFromFieldwise (double x1, double y1, double a){
 		//Cici is a genius and made these
 		//takes joystick axes and the angle the robot is at,
 		//returns joystick output as if we were point the joysick in a way to get the bot
@@ -69,7 +69,7 @@ public class RooDriveTrain {
 		return y2;
 	}
 	
-	void getRightMagnitudeFromFieldwise (double x1, double y1, double a){
+	double getRightMagnitudeFromFieldwise (double x1, double y1, double a){
 		double z1 = Math.sqrt((x1 * x1) + (y1 * y1));
 		double b = Math.atan(y1/x1);
 		a = (a * Math.PI)/180;
