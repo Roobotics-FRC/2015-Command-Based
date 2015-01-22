@@ -20,4 +20,5 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	public static int gyroPort = 3;
+	public static final int joystickPort = 0;
 }

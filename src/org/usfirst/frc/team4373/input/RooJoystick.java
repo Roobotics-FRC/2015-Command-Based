@@ -1,17 +1,18 @@
 package org.usfirst.frc.team4373.input;
 
+import org.usfirst.frc.team4373.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RooJoystick extends Joystick {
-	protected static final int ROO_PORT=0;
 	protected static RooJoystick rooJoystick = null;
 	
 	private double xThreshold, yThreshold = 0.1;
 	
 	public static RooJoystick getJoystick() {
 		if (rooJoystick == null) {
-			rooJoystick = new RooJoystick(ROO_PORT);
+			rooJoystick = new RooJoystick(RobotMap.joystickPort);
 		}
 		return rooJoystick;
 	}
