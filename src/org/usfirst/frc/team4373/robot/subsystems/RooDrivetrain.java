@@ -7,12 +7,13 @@ import org.usfirst.frc.team4373.robot.commands.RooDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class RooTankDrive extends Subsystem {
-	
+public class RooDrivetrain extends Subsystem {
+	Talon strafe;
 	Talon left;
 	Talon right;
-	public RooTankDrive(){
+	public RooDrivetrain(){
 		super();
+		strafe = new Talon (RobotMap.strafeMotorPort);
 		left = new Talon (RobotMap.leftMotorPort);
 		right = new Talon (RobotMap.rightMotorPort);
 	}
@@ -36,7 +37,9 @@ public class RooTankDrive extends Subsystem {
 		setLeft (foo);
 		setRight (foo);
 	}
-	
+	public void setStrafe(double foo) {
+		strafe.set(foo);
+	}
 	public void stop (){
 		setBoth (0);
 	}

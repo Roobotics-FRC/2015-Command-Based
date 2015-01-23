@@ -15,8 +15,7 @@ public class RooDrive extends CommandBase {
 	OI oi;
 	
 	public RooDrive() {
-		requires (Robot.rooStrafeDrive);
-		requires (Robot.rooTankDrive);
+		requires (Robot.rooDrivetrain);
 		oi = CommandBase.getOI();
 	}
 	
@@ -32,8 +31,8 @@ public class RooDrive extends CommandBase {
 		stickF = oi.getForwardAxis();
 		stickR = oi.getRightAxis();
 		
-		Robot.rooStrafeDrive.set(stickR);
-		Robot.rooTankDrive.setBoth(tankPowerFromAxes(stickF, stickR));
+		Robot.rooDrivetrain.setStrafe(stickR);
+		Robot.rooDrivetrain.setBoth(tankPowerFromAxes(stickF, stickR));
 
 	}
 

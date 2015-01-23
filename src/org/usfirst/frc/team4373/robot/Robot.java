@@ -10,8 +10,7 @@ import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4373.robot.commands.RooDrive;
 import org.usfirst.frc.team4373.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4373.robot.subsystems.RooStrafeDrive;
-import org.usfirst.frc.team4373.robot.subsystems.RooTankDrive;
+import org.usfirst.frc.team4373.robot.subsystems.RooDrivetrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,8 +22,7 @@ import org.usfirst.frc.team4373.robot.subsystems.RooTankDrive;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static RooStrafeDrive rooStrafeDrive;
-	public static RooTankDrive rooTankDrive;
+	public static RooDrivetrain rooDrivetrain;
 	public static RooDrive rooDrive;
 	public static CommandBase commandBase;
 
@@ -38,8 +36,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
     	commandBase.init();
 		rooDrive = new RooDrive();
-		rooStrafeDrive = new RooStrafeDrive();
-		rooTankDrive = new RooTankDrive();
+		rooDrivetrain = new RooDrivetrain();
         autonomousCommand = new ExampleCommand();
     }
 	
