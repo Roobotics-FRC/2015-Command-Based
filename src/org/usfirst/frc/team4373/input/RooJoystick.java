@@ -6,16 +6,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RooJoystick extends Joystick {
-	protected static RooJoystick rooJoystick = null;
-	
 	private double xThreshold, yThreshold = 0.1;
-	
-	public static RooJoystick getJoystick() {
-		if (rooJoystick == null) {
-			rooJoystick = new RooJoystick(RobotMap.joystickPort);
-		}
-		return rooJoystick;
-	}
 	
 	public RooJoystick(int port) {
 		super(port);
