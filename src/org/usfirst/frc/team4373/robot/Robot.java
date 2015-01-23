@@ -5,8 +5,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4373.robot.commands.RooDrive;
 import org.usfirst.frc.team4373.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4373.robot.subsystems.RooStrafeDrive;
+import org.usfirst.frc.team4373.robot.subsystems.RooTankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,6 +23,10 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public static RooStrafeDrive rooStrafeDrive;
+	public static RooTankDrive rooTankDrive;
+	public static RooDrive rooDrive;
+	
 
     Command autonomousCommand;
 
@@ -29,6 +37,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
+		rooDrive = new RooDrive();
+		rooStrafeDrive = new RooStrafeDrive();
+		rooTankDrive = new RooTankDrive();
         autonomousCommand = new ExampleCommand();
     }
 	

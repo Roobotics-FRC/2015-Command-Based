@@ -7,6 +7,7 @@ public class RooGyroscope extends Subsystem {
 
 	private Gyro gyro;
 	
+	
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
