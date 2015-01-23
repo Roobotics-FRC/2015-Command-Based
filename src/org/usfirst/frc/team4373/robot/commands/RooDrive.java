@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4373.robot.commands;
 
+import org.usfirst.frc.team4373.robot.OI;
 import org.usfirst.frc.team4373.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,6 +9,9 @@ public class RooDrive extends Command {
 	
 	//theoretical speed ratio between tank weels and strafe wheels, subject to experimental confirmation
 	public static final double TANK_STRAFE_SPEED_RATIO = 1.5088757396;
+	
+	int stickF;
+	int stickR;
 	
 	public RooDrive() {
 		requires (Robot.rooStrafeDrive);
@@ -24,7 +28,11 @@ public class RooDrive extends Command {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
+		stickF = OI.getForwardAxis();
+		stickR = OI.getRightAxis();
 		
+		Robot.rooStrafeDrive.set(stickR);
+		Robot.rooTankDrive.setBoth(tankPowerFromAxes(stickF, stickR));
 
 	}
 
