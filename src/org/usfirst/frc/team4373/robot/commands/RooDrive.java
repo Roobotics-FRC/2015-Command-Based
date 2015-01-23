@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4373.robot.commands;
 
-import org.usfirst.frc.team4373.robot.OI;
-import org.usfirst.frc.team4373.robot.Robot;
+import org.usfirst.frc.team4373.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 public class RooDrive extends CommandBase {
 	
@@ -12,11 +13,15 @@ public class RooDrive extends CommandBase {
 	
 	double stickF;
 	double stickR;
+	double stickYaw;
+	double gyroAngle;
 	OI oi;
+	SmartDashboard sd;
 	
 	public RooDrive() {
 		requires (Robot.rooDrivetrain);
 		oi = CommandBase.getOI();
+		sd = new SmartDashboard ();
 	}
 	
 	@Override
@@ -30,10 +35,27 @@ public class RooDrive extends CommandBase {
 		// TODO Auto-generated method stub
 		stickF = oi.getForwardAxis();
 		stickR = oi.getRightAxis();
+		stickYaw = oi.getYaw();
+		gyroAngle = oi.getGyroAngle();
 		
-		Robot.rooDrivetrain.setStrafe(stickR);
-		Robot.rooDrivetrain.setBoth(tankPowerFromAxes(stickF, stickR));
+		if (oi.getButton(RobotMap.absoluteDirectionModeEnable)){
+			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+			stickF = newStickF;
+		}
+		
+		if(oi.getButton(RobotMap.yawEnable) == true){
+			Robot.rooDrivetrain.setLeft(-stickYaw + stickF);
+			Robot.rooDrivetrain.setRight(stickYaw + stickF);
+		}else {
 
+			Robot.rooDrivetrain.setTank(tankPowerFromAxes(stickF, stickR));
+		}
+		Robot.rooDrivetrain.setStrafe(stickR);
+		sd.putNumber("Stick F", stickF);
+		sd.putNumber("Stick R", stickR);
+		sd.putNumber("Stick Yaw", stickYaw);
+		sd.putNumber("Gyro", gyroAngle);
 	}
 
 	@Override

@@ -6,12 +6,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RooJoystick extends Joystick {
-	private double xThreshold, yThreshold = 0.1;
+	private double xThreshold, yThreshold, yawThreshold = 0.1;
 	
 	public RooJoystick(int port) {
 		super(port);
 		SmartDashboard.putNumber("X threshold", xThreshold);
 		SmartDashboard.putNumber("Y threshold", yThreshold);
+		SmartDashboard.putNumber("Yaw Threshold", yawThreshold);
 	}
 	
 	public double getXThreshold() {
@@ -28,19 +29,34 @@ public class RooJoystick extends Joystick {
 		yThreshold = threshold;
 		SmartDashboard.putNumber("Y threshold", yThreshold);
 	}
+	public double getYawThreshold(){
+		return yawThreshold;
+	}
+	public void setYawThreshold(double threshold){
+		yawThreshold = threshold;
+		SmartDashboard.putNumber("Yaw Threshold",  yawThreshold);
+	}
 	
 	public double rooGetX() {
 		double axis = this.getRawAxis(0);
-		if (axis > xThreshold) {
-			return axis;
+		if (Math.abs(axis) > xThreshold) {
+			return Math.pow(axis,3);
 		}
 		return 0;
 	}
 	
 	public double rooGetY() {
 		double axis = this.getRawAxis(1);
-		if (axis > yThreshold) {
-			return axis;
+		if (Math.abs(axis) > yThreshold) {
+			return Math.pow(axis,3);
+		}
+		return 0;
+	}
+	
+	public double rooGetYaw(){
+		double axis = this.getRawAxis(RobotMap.yawAxis);
+		if(Math.abs(axis) >yawThreshold){
+			return axis * 0.5;
 		}
 		return 0;
 	}

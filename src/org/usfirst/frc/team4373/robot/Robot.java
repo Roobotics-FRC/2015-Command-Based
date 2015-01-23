@@ -22,7 +22,7 @@ import org.usfirst.frc.team4373.robot.subsystems.RooDrivetrain;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static RooDrivetrain rooDrivetrain;
+	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
 	public static RooDrive rooDrive;
 	public static CommandBase commandBase;
 
@@ -33,11 +33,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
+        // instantiate the command used for the autonomous period jri
     	commandBase.init();
-		rooDrive = new RooDrive();
-		rooDrivetrain = new RooDrivetrain();
+//		rooDrivetrain = new RooDrivetrain();
         autonomousCommand = new ExampleCommand();
+        rooDrive = new RooDrive();
     }
 	
 	public void disabledPeriodic() {

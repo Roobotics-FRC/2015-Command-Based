@@ -21,19 +21,19 @@ public class RooDrivetrain extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		setDefaultCommand(Robot.rooDrive);
+		setDefaultCommand(new RooDrive());
 
 	}
 	
 	public void setLeft (double foo){
-		left.set(foo);
+		left.set(-1 * foo);
 	}
 	
 	public void setRight (double foo){
 		right.set(foo);
 	}
 	
-	public void setBoth (double foo){
+	public void setTank (double foo){
 		setLeft (foo);
 		setRight (foo);
 	}
@@ -41,7 +41,8 @@ public class RooDrivetrain extends Subsystem {
 		strafe.set(foo);
 	}
 	public void stop (){
-		setBoth (0);
+		setTank (0);
+		setStrafe (0);
 	}
 	
 
