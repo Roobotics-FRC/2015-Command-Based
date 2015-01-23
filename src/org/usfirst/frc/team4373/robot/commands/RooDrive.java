@@ -12,11 +12,12 @@ public class RooDrive extends Command {
 	
 	int stickF;
 	int stickR;
+	OI oi;
 	
 	public RooDrive() {
 		requires (Robot.rooStrafeDrive);
 		requires (Robot.rooTankDrive);
-		
+		oi = CommandBase.getOI();
 	}
 	
 	@Override
@@ -28,8 +29,8 @@ public class RooDrive extends Command {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		stickF = OI.getForwardAxis();
-		stickR = OI.getRightAxis();
+		stickF = oi.getForwardAxis();
+		stickR = oi.getRightAxis();
 		
 		Robot.rooStrafeDrive.set(stickR);
 		Robot.rooTankDrive.setBoth(tankPowerFromAxes(stickF, stickR));
