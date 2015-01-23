@@ -5,13 +5,13 @@ import org.usfirst.frc.team4373.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RooDrive extends Command {
+public class RooDrive extends CommandBase {
 	
 	//theoretical speed ratio between tank weels and strafe wheels, subject to experimental confirmation
 	public static final double TANK_STRAFE_SPEED_RATIO = 1.5088757396;
 	
-	int stickF;
-	int stickR;
+	double stickF;
+	double stickR;
 	OI oi;
 	
 	public RooDrive() {
