@@ -3,7 +3,6 @@ package org.usfirst.frc.team4373.robot.commands;
 import org.usfirst.frc.team4373.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class RooDrive extends CommandBase {
@@ -16,12 +15,10 @@ public class RooDrive extends CommandBase {
 	double stickYaw;
 	double gyroAngle;
 	OI oi;
-	SmartDashboard sd;
 	
 	public RooDrive() {
 		requires (Robot.rooDrivetrain);
 		oi = CommandBase.getOI();
-		sd = new SmartDashboard ();
 	}
 	
 	@Override
@@ -48,7 +45,7 @@ public class RooDrive extends CommandBase {
 		}
 		
 		//temporary drive disable for safe testing
-		if (sd.getBoolean("Disable Drive", false) == false){
+		if (oi.rd.getBoolean("Disable Drive", false) == false){
 			//while the yaw-enable button is held down, 
 			//yawing the joystick should rotate the bot
 			if(oi.getButton(RobotMap.yawEnable) == true){
@@ -62,10 +59,10 @@ public class RooDrive extends CommandBase {
 		}
 		
 		//We really need to get the SmartDashboard into it's officail home, would that be in OI?
-		sd.putNumber("Stick F", stickF);
-		sd.putNumber("Stick R", stickR);
-		sd.putNumber("Stick Yaw", stickYaw);
-		sd.putNumber("Gyro", gyroAngle);
+		oi.rd.putNumber("Stick F", stickF);
+		oi.rd.putNumber("Stick R", stickR);
+		oi.rd.putNumber("Stick Yaw", stickYaw);
+		oi.rd.putNumber("Gyro", gyroAngle);
 	}
 
 	@Override
