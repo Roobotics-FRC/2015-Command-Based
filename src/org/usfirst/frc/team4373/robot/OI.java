@@ -12,6 +12,8 @@ import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
 public class OI {
 	private RooJoystick stick;
 	private RooGyroscope gyro;
+	//screw the police i'm not making all of those gets and sets
+	public RooDashboard rd;
 	
 	public double getForwardAxis() {
 		return stick.rooGetY();
@@ -34,6 +36,7 @@ public class OI {
 	public OI() {
 		stick = new RooJoystick(RobotMap.joystickPort);
 		gyro = new RooGyroscope(RobotMap.gyroPort);
+		rd = new RooDashboard();
 	}
 }
 
