@@ -32,26 +32,36 @@ public class RooDrive extends CommandBase {
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
+		// update the relevant variables
 		stickF = oi.getForwardAxis();
 		stickR = oi.getRightAxis();
 		stickYaw = oi.getYaw();
 		gyroAngle = oi.getGyroAngle();
 		
+		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
+		//or robot-reletive direction
+		//TODO: does this go here?
 		if (oi.getButton(RobotMap.absoluteDirectionModeEnable)){
 			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
 			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
 			stickF = newStickF;
 		}
 		
-		if(oi.getButton(RobotMap.yawEnable) == true){
-			Robot.rooDrivetrain.setLeft(-stickYaw + stickF);
-			Robot.rooDrivetrain.setRight(stickYaw + stickF);
-		}else {
-
-			Robot.rooDrivetrain.setTank(tankPowerFromAxes(stickF, stickR));
+		//temporary drive disable for safe testing
+		if (sd.getBoolean("Disable Drive", false) == false){
+			//while the yaw-enable button is held down, 
+			//yawing the joystick should rotate the bot
+			if(oi.getButton(RobotMap.yawEnable) == true){
+				Robot.rooDrivetrain.setLeft(-stickYaw + stickF);
+				Robot.rooDrivetrain.setRight(stickYaw + stickF);
+				Robot.rooDrivetrain.setStrafe(stickR);
+			}else {
+				Robot.rooDrivetrain.setTank(tankPowerFromAxes(stickF, stickR));
+				Robot.rooDrivetrain.setStrafe(stickR);
+			}
 		}
-		Robot.rooDrivetrain.setStrafe(stickR);
+		
+		//We really need to get the SmartDashboard into it's officail home, would that be in OI?
 		sd.putNumber("Stick F", stickF);
 		sd.putNumber("Stick R", stickR);
 		sd.putNumber("Stick Yaw", stickYaw);
