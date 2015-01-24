@@ -25,14 +25,9 @@ public class RooDriveLocked extends RooDrive {
 		if (oi.rd.getBoolean("Disable Drive", false) == false){
 			//while the yaw-enable button is held down, 
 			//yawing the joystick should rotate the bot
-			if(oi.getButton(RobotMap.yawEnable) == true){
-				Robot.rooDrivetrain.setLeft(-gyroAngle + stickF);
-				Robot.rooDrivetrain.setRight(gyroAngle + stickF);
-				Robot.rooDrivetrain.setStrafe(stickR);
-			}else {
-				Robot.rooDrivetrain.setTank(tankPowerFromAxes(stickF, stickR));
-				Robot.rooDrivetrain.setStrafe(stickR);
-			}
+			Robot.rooDrivetrain.setLeft(-gyroAngle + stickF);
+			Robot.rooDrivetrain.setRight(gyroAngle + stickF);
+			Robot.rooDrivetrain.setStrafe(stickR);
 		}
 		
 		//We really need to get the SmartDashboard into it's officail home, would that be in OI?
