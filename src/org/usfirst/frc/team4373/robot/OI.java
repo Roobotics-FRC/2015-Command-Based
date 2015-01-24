@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.buttons.*;
 
 import org.usfirst.frc.team4373.input.*;
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4373.robot.commands.RooDriveFree;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -41,6 +42,7 @@ public class OI {
 		rd = new RooDashboard();
 		
 		lockRotation = new JoystickButton (stick, RobotMap.lockRotationButton);
+		lockRotation.toggleWhenPressed(new RooDriveFree ());
 	}
 }
 

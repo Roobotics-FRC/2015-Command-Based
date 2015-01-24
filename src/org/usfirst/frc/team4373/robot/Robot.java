@@ -37,7 +37,6 @@ public class Robot extends IterativeRobot {
     	commandBase.init();
 //		rooDrivetrain = new RooDrivetrain();
         autonomousCommand = new ExampleCommand();
-        rooDrive = new RooDrive();
     }
 	
 	public void disabledPeriodic() {

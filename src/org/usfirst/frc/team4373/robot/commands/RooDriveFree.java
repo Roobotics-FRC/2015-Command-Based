@@ -5,18 +5,18 @@ import org.usfirst.frc.team4373.robot.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public abstract class RooDrive extends CommandBase {
+public class RooDriveFree extends CommandBase {
 	
 	//theoretical speed ratio between tank weels and strafe wheels, subject to experimental confirmation
-	protected static final double TANK_STRAFE_SPEED_RATIO = 1.5088757396;
+	public static final double TANK_STRAFE_SPEED_RATIO = 1.5088757396;
 	
-	protected double stickF;
-	protected double stickR;
-	protected double stickYaw;
-	protected double gyroAngle;
-	protected OI oi;
+	double stickF;
+	double stickR;
+	double stickYaw;
+	double gyroAngle;
+	OI oi;
 	
-	public RooDrive() {
+	public RooDriveFree() {
 		requires (Robot.rooDrivetrain);
 		oi = CommandBase.getOI();
 	}
@@ -29,7 +29,34 @@ public abstract class RooDrive extends CommandBase {
 
 	@Override
 	protected void execute() {
+		// update the relevant variables
+		stickF = oi.getForwardAxis();
+		stickR = oi.getRightAxis();
+		stickYaw = oi.getYaw();
+		gyroAngle = oi.getGyroAngle();
 		
+		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
+		//or robot-reletive direction
+		//TODO: does this go here?
+		if (oi.getButton(RobotMap.absoluteDirectionModeEnable)){
+			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+			stickF = newStickF;
+		}
+		
+		//temporary drive disable for safe testing
+		if (oi.rd.rooGetBoolean("Disable Drive", false) == false){
+			//while the yaw-enable button is held down, 
+			//yawing the joystick should rotate the bot
+				Robot.rooDrivetrain.setLeft(-stickYaw + stickF);
+				Robot.rooDrivetrain.setRight(stickYaw + stickF);
+				Robot.rooDrivetrain.setStrafe(stickR);
+		}
+		
+		oi.rd.putNumber("Stick F", stickF);
+		oi.rd.putNumber("Stick R", stickR);
+		oi.rd.putNumber("Stick Yaw", stickYaw);
+		oi.rd.putNumber("Gyro", gyroAngle);
 	}
 
 	@Override
@@ -50,7 +77,7 @@ public abstract class RooDrive extends CommandBase {
 
 	}
 	
-	protected  double tankPowerFromAxes (double forwardAxis, double rightAxis){
+	static double tankPowerFromAxes (double forwardAxis, double rightAxis){
 		//at full forewards power, I think the shape we're looking for in terms of variation with the right axis
 		//is a semi-elipse following the equation y=.509sqrt(1-xx) + 1
 		//this function will take that result and multiply it by percentage foreward power in an attempt
@@ -67,7 +94,7 @@ public abstract class RooDrive extends CommandBase {
 		return motorPower;
 	}
 	
-	protected static double getForwardMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
+	static double getForwardMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
 		//Cici is a genius and made these
 		//takes joystick axes and the angle the robot is at,
 		//returns joystick output as if we were point the joysick in a way to get the bot
@@ -83,7 +110,7 @@ public abstract class RooDrive extends CommandBase {
 		return y2;
 	}
 	
-	protected static double getRightMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
+	static double getRightMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
 		double z1 = Math.sqrt((x1 * x1) + (y1 * y1));
 		double b = Math.atan(y1/x1);
 		gyroAngle = (gyroAngle * Math.PI)/180;

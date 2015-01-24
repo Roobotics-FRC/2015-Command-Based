@@ -21,7 +21,7 @@ public class RooDrivetrain extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		setDefaultCommand(new RooDrive());
+		setDefaultCommand(new RooDriveLocked());
 
 	}
 	
