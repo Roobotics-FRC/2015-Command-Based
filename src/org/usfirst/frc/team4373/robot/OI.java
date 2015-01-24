@@ -31,7 +31,7 @@ public class OI {
 		return stick.getRawButton(button);
 	}
 	public double getGyroAngle(){
-		return gyro.rooGet();
+		return gyro.rooGetAngle();
 	}
 	
 	
