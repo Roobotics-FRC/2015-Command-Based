@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4373.robot;
 
-import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.*;
 
 import org.usfirst.frc.team4373.input.*;
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
@@ -14,6 +14,8 @@ public class OI {
 	private RooGyroscope gyro;
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
+	
+	private JoystickButton lockRotation;
 	
 	public double getForwardAxis() {
 		return stick.rooGetY();
@@ -37,6 +39,8 @@ public class OI {
 		stick = new RooJoystick(RobotMap.joystickPort);
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
+		
+		lockRotation = new JoystickButton (stick, RobotMap.lockRotationButton);
 	}
 }
 

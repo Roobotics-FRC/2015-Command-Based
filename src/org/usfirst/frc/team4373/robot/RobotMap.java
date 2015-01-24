@@ -24,6 +24,7 @@ public class RobotMap {
 	
 	public static int gyroPort = 1;
 	public static final int joystickPort = 0;
+	public static final int lockRotationButton = 1;
 	
 	
 }
