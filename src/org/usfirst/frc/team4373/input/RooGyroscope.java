@@ -9,8 +9,14 @@ public class RooGyroscope extends Gyro {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public double rooGet (){
-		return this.getAngle() % 360;
+	public double rooGet () {
+		double angle = this.getAngle();
+		angle = angle % (Math.abs(angle)/angle)*360;
+		if (angle < -180)
+			return angle + 360;
+		if (angle > 180)
+			return angle - 360;
+		return angle;
 	}
 	
 	
