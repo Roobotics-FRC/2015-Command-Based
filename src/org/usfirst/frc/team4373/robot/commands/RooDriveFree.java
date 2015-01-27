@@ -23,10 +23,12 @@ public class RooDriveFree extends RooDrive {
 	@Override
 	protected void execute() {
 		// update the relevant variables
-		stickF = oi.getForwardAxis();
-		stickR = oi.getRightAxis();
-		stickYaw = oi.getYaw();
-		gyroAngle = oi.getGyroAngle();
+
+    	CommandBase.getOI().rd.putString("Debug String: ", "Tony squeezes bread");
+		stickF = this.oi.getForwardAxis();
+		stickR = this.oi.getRightAxis();
+		stickYaw = this.oi.getYaw();
+		gyroAngle = this.oi.getGyroAngle();
 		
 		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
 		//or robot-reletive direction

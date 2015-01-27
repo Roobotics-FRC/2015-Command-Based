@@ -13,7 +13,7 @@ public class RobotMap {
 	public static int leftMotorPort = 1;
 	public static int rightMotorPort = 0;
 	public static int strafeMotorPort = 2;
-	public static int yawEnable = 1;
+	public static final int IntakeMotorPort = 3;
 	public static int yawAxis = 2;
 	public static int absoluteDirectionModeEnable = 11;
     
@@ -23,6 +23,8 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	public static int gyroPort = 1;
+	public static int intakeButton = 2;
+	public static double driveMultiplier = .3;
 	public static final int joystickPort = 0;
 	public static final int lockRotationButton = 1;
 	

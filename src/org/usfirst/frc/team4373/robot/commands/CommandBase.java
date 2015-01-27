@@ -6,10 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public abstract class CommandBase extends Command {
 
-	static OI oi;
+	static protected OI oi;
 	
 	public static void init(){
 		oi = new OI();
+		oi.init();
 	}
 	
 	public static OI getOI (){

@@ -25,8 +25,8 @@ public class RooDriveLocked extends RooDrive {
 		if (oi.rd.getBoolean("Disable Drive", false) == false){
 			//while the yaw-enable button is held down, 
 			//yawing the joystick should rotate the bot
-			Robot.rooDrivetrain.setLeft(-gyroAngle + stickF);
-			Robot.rooDrivetrain.setRight(gyroAngle + stickF);
+			Robot.rooDrivetrain.setLeft((-gyroAngle/180) + stickF);
+			Robot.rooDrivetrain.setRight((gyroAngle/180) + stickF);
 			Robot.rooDrivetrain.setStrafe(stickR);
 		}
 		

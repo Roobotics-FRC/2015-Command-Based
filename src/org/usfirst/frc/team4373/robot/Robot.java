@@ -10,7 +10,7 @@ import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4373.robot.commands.RooDrive;
 import org.usfirst.frc.team4373.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4373.robot.subsystems.RooDrivetrain;
+import org.usfirst.frc.team4373.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,8 +23,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
-	public static RooDrive rooDrive;
-	public static CommandBase commandBase;
+	public static RooIntake rooIntake = new RooIntake ();
 
     Command autonomousCommand;
 
@@ -34,8 +33,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period jri
-    	commandBase.init();
-//		rooDrivetrain = new RooDrivetrain();
+    	CommandBase.init();
         autonomousCommand = new ExampleCommand();
     }
 	

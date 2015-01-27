@@ -40,9 +40,13 @@ public class OI {
 		stick = new RooJoystick(RobotMap.joystickPort);
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
-		
+
+	}
+	
+	public void init (){
+		//This stuff has to happen ouside the constructor because they reference OI
 		lockRotation = new JoystickButton (stick, RobotMap.lockRotationButton);
-		lockRotation.toggleWhenPressed(new RooDriveFree ());
+		lockRotation.toggleWhenPressed(new RooDriveFree());
 	}
 }
 
