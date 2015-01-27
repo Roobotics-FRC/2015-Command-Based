@@ -5,10 +5,11 @@ import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import edu.wpi.first.wpilibj.Gyro;
 
 public class RooGyroscope extends Gyro {
-
+	// Used to compensate for the fact the Gryo doesn't always start at zero
+	private double initAngle;
 	public RooGyroscope(int channel) {
 		super(channel);
-		// TODO Auto-generated constructor stub
+		initAngle = this.getAngle();
 	}
 	
 	public double rooGetAngle () {
