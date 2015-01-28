@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4373.input.*;
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4373.robot.commands.RooDriveFree;
+import org.usfirst.frc.team4373.robot.commands.RooSwitchDriveMode;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -56,6 +57,7 @@ public class OI {
 	public void init (){
 		//This stuff has to happen ouside the constructor because they reference OI
 		lockRotation = new JoystickButton (stick, RobotMap.lockRotationButton);
+		lockRotation.whenPressed(new RooSwitchDriveMode());
 		lockRotation.toggleWhenPressed(new RooDriveFree());
 	}
 }
