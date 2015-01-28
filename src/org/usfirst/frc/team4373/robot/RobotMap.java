@@ -19,6 +19,7 @@ public class RobotMap {
 	public static final int IntakeMotorPort = 3;
 	public static int yawAxis = 2;
 	public static int absoluteDirectionModeEnable = 11;
+	public static final int forkliftMotorPairPort = 4;
     
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:

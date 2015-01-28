@@ -44,7 +44,9 @@ public class OI {
 	public double getSavedAngleFromSavedAngle(){
 		return gyro.rooGetAngleFromSavedAngle();
 	}
-	
+	public double getEncoderPosition() {
+		return encoder.rooGetAngle();
+	}
 	
 	
 	public OI() {
