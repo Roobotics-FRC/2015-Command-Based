@@ -6,12 +6,16 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class RooDriveLocked extends RooDrive {		
+	
+	private double tareAngle;
+	
 	@Override
 	protected void execute() {
 		// update the relevant variables
 		stickF = oi.getForwardAxis();
 		stickR = oi.getRightAxis();
 		gyroAngle = oi.getGyroAngle();
+		tareAngle = oi.getSavedAngleFromSavedAngle();
 		
 		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
 		//or robot-reletive direction
@@ -25,8 +29,8 @@ public class RooDriveLocked extends RooDrive {
 		if (oi.rd.getBoolean("Disable Drive", false) == false){
 			//while the yaw-enable button is held down, 
 			//yawing the joystick should rotate the bot
-			Robot.rooDrivetrain.setLeft((-gyroAngle/180) + stickF);
-			Robot.rooDrivetrain.setRight((gyroAngle/180) + stickF);
+			Robot.rooDrivetrain.setLeft((-tareAngle/180) + stickF);
+			Robot.rooDrivetrain.setRight((tareAngle/180) + stickF);
 			Robot.rooDrivetrain.setStrafe(stickR);
 		}
 		

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4373.robot;
 
 import edu.wpi.first.wpilibj.buttons.*;
+import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4373.input.*;
 import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
@@ -30,8 +31,16 @@ public class OI {
 	public boolean getButton(int button){
 		return stick.getRawButton(button);
 	}
+	
+	//Gyro Functions:
 	public double getGyroAngle(){
 		return gyro.rooGetAngle();
+	}
+	public void saveGyroAngle(){
+		gyro.rooSaveAngle();
+	}
+	public double getSavedAngleFromSavedAngle(){
+		return gyro.rooGetAngleFromSavedAngle();
 	}
 	
 	
@@ -42,6 +51,7 @@ public class OI {
 		rd = new RooDashboard();
 
 	}
+	
 	
 	public void init (){
 		//This stuff has to happen ouside the constructor because they reference OI
