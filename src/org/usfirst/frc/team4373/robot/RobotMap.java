@@ -1,4 +1,7 @@
 package org.usfirst.frc.team4373.robot;
+
+import edu.wpi.first.wpilibj.DigitalSource;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -25,8 +28,10 @@ public class RobotMap {
 	public static int gyroPort = 1;
 	public static int intakeButton = 2;
 	public static double driveMultiplier = .3;
+	public static int encoderPort1 = 1;
 	public static final int joystickPort = 0;
 	public static final int lockRotationButton = 1;
+	public static final int EncoderPort2 = 2;
 	
 	
 }

@@ -17,6 +17,7 @@ public class OI {
 	private RooGyroscope gyro;
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
+	private RooEncoder encoder;
 	
 	private JoystickButton lockRotation;
 	
@@ -50,6 +51,7 @@ public class OI {
 		stick = new RooJoystick(RobotMap.joystickPort);
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
+		encoder = new RooEncoder(RobotMap.encoderPort1, RobotMap.EncoderPort2);
 
 	}
 	
