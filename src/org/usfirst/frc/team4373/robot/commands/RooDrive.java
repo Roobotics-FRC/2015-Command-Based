@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public abstract class RooDrive extends CommandBase {
 	
 	//theoretical speed ratio between tank weels and strafe wheels, subject to experimental confirmation
-	protected static final double TANK_STRAFE_SPEED_RATIO = 1.5088757396;
+	protected static final double TANK_STRAFE_SPEED_RATIO = 1.5088757396; // Dorian: sig figs you lose 3 points
 	
 	protected double stickF;
 	protected double stickR;

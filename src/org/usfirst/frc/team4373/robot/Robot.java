@@ -23,6 +23,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
+	public static RooForklift rooForkLift = new RooForklift();
 	public static RooIntake rooIntake = new RooIntake ();
 
     Command autonomousCommand;
