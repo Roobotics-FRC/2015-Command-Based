@@ -19,6 +19,7 @@ public class OI {
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
 	private RooEncoder encoder;
+	private RooSyntheticEncoder schmencoder;
 	
 	private DigitalInput hally;
 	
@@ -30,6 +31,7 @@ public class OI {
 	public double getRightAxis() {
 		return stick.rooGetX();
 	}
+	
 	public double getYaw(){
 		return stick.rooGetYaw();
 	}
@@ -54,7 +56,9 @@ public class OI {
 	public double getEncoderPosition() {
 		return encoder.rooGetAngle();
 	}
-	
+	public int getSchmencoderPosition(){
+		return schmencoder.getPosition();
+	}
 	
 	public OI() {
 		stick = new RooJoystick(RobotMap.joystickPort);
@@ -62,6 +66,7 @@ public class OI {
 		rd = new RooDashboard();
 		encoder = new RooEncoder(RobotMap.encoderPort1, RobotMap.EncoderPort2);
 		hally = new DigitalInput(RobotMap.HallyPort);
+		schmencoder = new RooSyntheticEncoder (99, 99, 99);
 
 	}
 	
@@ -71,6 +76,10 @@ public class OI {
 		lockRotation = new JoystickButton (stick, RobotMap.lockRotationButton);
 		lockRotation.whenPressed(new RooSwitchDriveMode());
 		lockRotation.toggleWhenPressed(new RooDriveFree());
+	}
+	
+	public void iterate (){
+		schmencoder.iterate();
 	}
 }
 

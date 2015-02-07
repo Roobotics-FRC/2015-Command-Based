@@ -43,14 +43,15 @@ public class RooSyntheticEncoder {
 		if (previousState != null) { // If this is not the first iteration
 			if (hally.get()) {
 				if (!previousState.isActivated()) {
-					if (Robot.rooForkLift.getDirection() == -1)
-						--currentPosition;
-					else if (Robot.rooForkLift.getDirection() == 1)
-						++currentPosition;
+					currentPosition += Robot.rooForkLift.getDirection();
 				}
 			}
 		}
 		previousState = new State(hally);
+	}
+	
+	public int getPosition(){
+		return currentPosition;
 	}
 	
 
