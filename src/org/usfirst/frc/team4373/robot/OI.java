@@ -60,6 +60,8 @@ public class OI {
 		return schmencoder.getPosition();
 	}
 	
+	
+	
 	public OI() {
 		stick = new RooJoystick(RobotMap.joystickPort);
 		gyro = new RooGyroscope(RobotMap.gyroPort);

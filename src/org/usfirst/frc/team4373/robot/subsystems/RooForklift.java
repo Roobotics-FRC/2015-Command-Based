@@ -6,6 +6,7 @@ import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.commands.MoveForklift;
 import org.usfirst.frc.team4373.robot.commands.RooIntakeCommand;
 
+import util.RooMath;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -21,14 +22,18 @@ public class RooForklift extends Subsystem {
 	}
 	public void moveToPosition(int position) {
 		int distanceFromTarget = CommandBase.getOI().getSchmencoderPosition() - position;
-		while (Math.abs(distanceFromTarget) > deadZone)
-			motorPair.set(power * -1 * (Math.abs(distanceFromTarget)/distanceFromTarget));
-		motorPair.set(0.0D);
+		if (Math.abs(distanceFromTarget) > deadZone)
+			motorPair.set(power * -1 * (RooMath.getSign(distanceFromTarget)));
+		else
+			motorPair.set(0.0D);
 	}
 	@Override
 	protected void initDefaultCommand() {
 		setDefaultCommand(new MoveForklift());
 		
+	}
+	public void set(double val) {
+		motorPair.set(val);
 	}
 	
 	public int getDirection(){

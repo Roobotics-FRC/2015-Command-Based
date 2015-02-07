@@ -21,7 +21,8 @@ public class MoveForklift extends CommandBase {
 	@Override
 	protected void execute() {
 		if (oi.getButton(RobotMap.FORKLIFT_P1)) // Or something
-			Robot.rooForkLift.moveToPosition(RooForklift.p1);
+			Robot.rooForkLift.moveToPosition((int)RooForklift.p1);
+		
 	}
 
 	@Override
