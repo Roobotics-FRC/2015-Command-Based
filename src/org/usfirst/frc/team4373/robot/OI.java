@@ -66,7 +66,7 @@ public class OI {
 		rd = new RooDashboard();
 		encoder = new RooEncoder(RobotMap.encoderPort1, RobotMap.EncoderPort2);
 		hally = new DigitalInput(RobotMap.HallyPort);
-		schmencoder = new RooSyntheticEncoder (99, 99, 99);
+		schmencoder = new RooSyntheticEncoder (10, 99, 99);
 
 	}
 	
