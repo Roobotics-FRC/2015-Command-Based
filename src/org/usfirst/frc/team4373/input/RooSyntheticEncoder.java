@@ -23,7 +23,7 @@ public class RooSyntheticEncoder {
 			position = currentPosition;
 		}
 		public boolean isActivated() {
-			return activated;
+			return !activated;
 		}
 		public int getMotorDirection() {
 			return motorDirection;
