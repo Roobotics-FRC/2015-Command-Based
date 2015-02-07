@@ -2,6 +2,7 @@ package org.usfirst.frc.team4373.robot.commands;
 
 import org.usfirst.frc.team4373.robot.OI;
 import org.usfirst.frc.team4373.robot.Robot;
+import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.subsystems.RooForklift;
 
 public class MoveForklift extends CommandBase {
@@ -19,7 +20,7 @@ public class MoveForklift extends CommandBase {
 
 	@Override
 	protected void execute() {
-		if (oi.getButton(0)) // Or something
+		if (oi.getButton(RobotMap.FORKLIFT_P1)) // Or something
 			Robot.rooForkLift.moveToPosition(RooForklift.p1);
 	}
 
