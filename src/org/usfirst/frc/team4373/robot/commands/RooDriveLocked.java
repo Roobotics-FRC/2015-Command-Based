@@ -11,12 +11,16 @@ public class RooDriveLocked extends RooDrive {
 	
 	@Override
 	protected void execute() {
+
+    	CommandBase.getOI().rd.putBoolean("Hally: ", oi.getHally());
+		
 		// update the relevant variables
 		stickF = oi.getForwardAxis();
 		stickR = oi.getRightAxis();
 		gyroAngle = oi.getGyroAngle();
 		tareAngle = oi.getSavedAngleFromSavedAngle();
-		
+
+    	CommandBase.getOI().rd.putString("Drive Mode: ", "Free Rotation");
 		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
 		//or robot-reletive direction
 		//TODO: does this go here?

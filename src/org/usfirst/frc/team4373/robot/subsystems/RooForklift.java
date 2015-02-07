@@ -15,6 +15,7 @@ public class RooForklift extends Subsystem {
 	public static final double p1=1,p2=2,p3=3,p4=4;
 	private static final double deadZone = 1;
 	private static final double power = 0.5;
+	
 	public RooForklift() {
 		motorPair = new Talon(RobotMap.forkliftMotorPairPort);
 	}
@@ -31,5 +32,9 @@ public class RooForklift extends Subsystem {
 	protected void initDefaultCommand() {
 		setDefaultCommand(new MoveForklift());
 		
+	}
+	
+	public int getDirection(){
+		return (int) motorPair.get();
 	}
 }

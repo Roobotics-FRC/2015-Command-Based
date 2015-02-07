@@ -24,7 +24,7 @@ public class RooDriveFree extends RooDrive {
 	protected void execute() {
 		// update the relevant variables
 
-    	CommandBase.getOI().rd.putString("Debug String: ", "Tony squeezes bread");
+    	CommandBase.getOI().rd.putString("Drive Mode: ", "Free Rotation");
 		stickF = this.oi.getForwardAxis();
 		stickR = this.oi.getRightAxis();
 		stickYaw = this.oi.getYaw();

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4373.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -19,6 +20,8 @@ public class OI {
 	public RooDashboard rd;
 	private RooEncoder encoder;
 	
+	private DigitalInput hally;
+	
 	private JoystickButton lockRotation;
 	
 	public double getForwardAxis() {
@@ -32,6 +35,10 @@ public class OI {
 	}
 	public boolean getButton(int button){
 		return stick.getRawButton(button);
+	}
+	
+	public boolean getHally (){
+		return hally.get();
 	}
 	
 	//Gyro Functions:
@@ -54,6 +61,7 @@ public class OI {
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
 		encoder = new RooEncoder(RobotMap.encoderPort1, RobotMap.EncoderPort2);
+		hally = new DigitalInput(RobotMap.HallyPort);
 
 	}
 	
