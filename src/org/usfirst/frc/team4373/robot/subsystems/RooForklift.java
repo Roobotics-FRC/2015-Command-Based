@@ -24,7 +24,8 @@ public class RooForklift extends Subsystem {
 		int distanceFromTarget = CommandBase.getOI().getSchmencoderPosition() - position;
 		if (Math.abs(distanceFromTarget) > deadZone) {
 			CommandBase.getOI().rd.putNumber("Joystick move to position power: ", power * -1 * (RooMath.getSign(distanceFromTarget)));
-			motorPair.set(power * -1 * (RooMath.getSign(distanceFromTarget)));
+			double motorPower = power * -1 * (RooMath.getSign(distanceFromTarget));
+			motorPair.set(motorPower/5);
 		}
 		else {
 			CommandBase.getOI().rd.putNumber("Joystick move to position power: ", 0.0D);
