@@ -2,6 +2,7 @@ package org.usfirst.frc.team4373.robot.commands;
 
 import org.usfirst.frc.team4373.robot.*;
 
+import util.RooMath;
 import edu.wpi.first.wpilibj.command.Command;
 
 
@@ -20,8 +21,10 @@ public class RooDriveLocked extends RooDrive {
 		stickR = oi.getRightAxis();
 		gyroAngle = oi.getGyroAngle();
 		tareAngle = oi.getSavedAngleFromSavedAngle();
-
-    	CommandBase.getOI().rd.putString("Drive Mode: ", "Drive Straight");
+		
+		oi.rd.putNumber("Tare Angle: ", tareAngle);
+		
+    	oi.rd.putString("Drive Mode: ", "Drive Straight");
 		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
 		//or robot-reletive direction
 		//TODO: does this go here?
@@ -34,8 +37,9 @@ public class RooDriveLocked extends RooDrive {
 		if (oi.rd.getBoolean("Disable Drive", false) == false){
 			//while the yaw-enable button is held down, 
 			//yawing the joystick should rotate the bot
-			Robot.rooDrivetrain.setLeft((-tareAngle/180) + stickF);
-			Robot.rooDrivetrain.setRight((tareAngle/180) + stickF);
+			Robot.rooDrivetrain.setLeft((Math.sqrt(Math.abs(tareAngle/180)) * RooMath.getSign(tareAngle)) + stickF);
+			Robot.rooDrivetrain.setRight(-(Math.sqrt(Math.abs(tareAngle/180)) * RooMath.getSign(tareAngle)) + stickF);
+			oi.rd.putNumber ("giving motors power= ", (Math.sqrt(tareAngle/180)*RooMath.getSign(tareAngle)) + stickF);
 			Robot.rooDrivetrain.setStrafe(stickR);
 		}
 		

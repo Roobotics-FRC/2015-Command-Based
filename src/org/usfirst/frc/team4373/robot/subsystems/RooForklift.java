@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class RooForklift extends Subsystem {
 	private Talon motorPair;
 	private boolean reversed = false;
-	public static final int p1=1,p2=2,p3=3,p4=4;
+	public static final int p1=10,p2=2,p3=3,p4=4;
 	private static final double deadZone = 1;
 	private static final double power = 0.5;
 	

@@ -22,7 +22,8 @@ public class RooSwitchDriveMode extends CommandBase {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		oi.saveGyroAngle();
-
+		oi.rd.putNumber("Debug String: (current angle)", oi.getGyroAngle());
+		cancel();
 	}
 
 	@Override

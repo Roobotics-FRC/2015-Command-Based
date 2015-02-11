@@ -27,7 +27,9 @@ public class RooGyroscope extends Gyro {
 	}
 	
 	public void rooSaveAngle (){
-		savedAngle = rooGetAngle();
+		double angle = rooGetAngle();
+		CommandBase.getOI().rd.putNumber("Current saved angle: ", angle);
+		savedAngle = angle;
 	}
 	
 	public double rooGetSavedAngle (){
@@ -41,6 +43,7 @@ public class RooGyroscope extends Gyro {
 			return angle + 360;
 		if (angle > 180)
 			return angle - 360;
+		CommandBase.getOI().rd.putNumber("Saved angle: ", angle);
 		return angle;
 	}
 	
