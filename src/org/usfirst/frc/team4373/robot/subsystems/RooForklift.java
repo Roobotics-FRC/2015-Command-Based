@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class RooForklift extends Subsystem {
 	private Talon motorPair;
 	private boolean reversed = false;
-	public static final int p1=10,p2=2,p3=3,p4=4;
+	public static final int p1=1,p2=2,p3=3,p4=4;
 	private static final double deadZone = 1;
 	private static final double power = 0.5;
 	
@@ -22,17 +22,10 @@ public class RooForklift extends Subsystem {
 	}
 	public void moveToPosition(int position) {
 		int distanceFromTarget = CommandBase.getOI().getSchmencoderPosition() - position;
-		if (Math.abs(distanceFromTarget) > deadZone) {
-			double motorPower = -power * (RooMath.getSign(distanceFromTarget));
-			CommandBase.getOI().rd.putNumber("Forklift move to position power: ", motorPower);
-			CommandBase.getOI().rd.putNumber("Forklift distance from dest: ", distanceFromTarget);
-			motorPair.set(motorPower);
-		}
-		else {
-			CommandBase.getOI().rd.putNumber("FOrklift move to position power: ", 0.0D);
+		if (Math.abs(distanceFromTarget) > deadZone)
+			motorPair.set(power * -1 * (RooMath.getSign(distanceFromTarget)));
+		else
 			motorPair.set(0.0D);
-		}
-			
 	}
 	@Override
 	protected void initDefaultCommand() {
@@ -44,6 +37,6 @@ public class RooForklift extends Subsystem {
 	}
 	
 	public int getDirection(){
-		return RooMath.getSign(motorPair.get());
+		return (int) motorPair.get();
 	}
 }
