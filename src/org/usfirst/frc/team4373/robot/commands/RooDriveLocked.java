@@ -13,8 +13,8 @@ public class RooDriveLocked extends RooDrive {
 	@Override
 	protected void execute() {
 
-    	CommandBase.getOI().rd.putBoolean("Hally: ", oi.getHally());
-    	CommandBase.getOI().rd.putNumber("Hally Position: ", oi.getSchmencoderPosition());
+    	
+    	
 		
 		// update the relevant variables
 		stickF = oi.getForwardAxis();

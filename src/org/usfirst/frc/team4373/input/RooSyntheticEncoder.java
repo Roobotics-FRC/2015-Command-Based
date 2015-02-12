@@ -1,12 +1,13 @@
 package org.usfirst.frc.team4373.input;
 
 import org.usfirst.frc.team4373.robot.Robot;
+import org.usfirst.frc.team4373.robot.RobotMap;
+import org.usfirst.frc.team4373.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
 public class RooSyntheticEncoder {
 	//aka RooSchmencoder
-	
 	
 	private DigitalInput hally;
 	public static int numberOfPositions;
@@ -34,19 +35,26 @@ public class RooSyntheticEncoder {
 	}
 	
 	public RooSyntheticEncoder(int channel, int numberOfPositions, int startingPosition){
-		hally = new DigitalInput(channel);
+		hally = new DigitalInput(RobotMap.HallyPort);
 		this.numberOfPositions = numberOfPositions;
 		this.currentPosition = startingPosition;
 	}
-	
+	int i=0;
 	public void iterate (){
+		++i;
+		CommandBase.getOI().rd.putNumber("Hally Position: ", currentPosition);
+		CommandBase.getOI().rd.putBoolean("Hally activated: ", hally.get());
 		if (previousState != null) { // If this is not the first iteration
+			CommandBase.getOI().rd.putString("Previous state not null", "yep");
 			if (hally.get()) {
 				if (!previousState.isActivated()) {
-					currentPosition += Robot.rooForkLift.getDirection();
+					int direction = Robot.rooForkLift.getDirection();
+					CommandBase.getOI().rd.putNumber("Incrementing by:", direction);
+					currentPosition += direction;
 				}
 			}
 		}
+		CommandBase.getOI().rd.putNumber("RSE: ", currentPosition);
 		previousState = new State(hally);
 	}
 	

@@ -34,7 +34,7 @@ public class RobotMap {
 	public static final int joystickPort = 0;
 	public static final int lockRotationButton = 1;
 	public static final int EncoderPort2 = 2;
-	public static final int HallyPort = 0;
+	public static final int HallyPort = 3;
 	
 	
 }

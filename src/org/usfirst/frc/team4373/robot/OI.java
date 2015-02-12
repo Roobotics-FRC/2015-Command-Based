@@ -21,7 +21,7 @@ public class OI {
 	private RooEncoder encoder;
 	private RooSyntheticEncoder schmencoder;
 	
-	private DigitalInput hally;
+	
 	
 	private JoystickButton lockRotation;
 	
@@ -39,9 +39,7 @@ public class OI {
 		return stick.getRawButton(button);
 	}
 	
-	public boolean getHally (){
-		return hally.get();
-	}
+	
 	
 	//Gyro Functions:
 	public double getGyroAngle(){
@@ -66,9 +64,9 @@ public class OI {
 		stick = new RooJoystick(RobotMap.joystickPort);
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
+		
 		encoder = new RooEncoder(RobotMap.encoderPort1, RobotMap.EncoderPort2);
-		hally = new DigitalInput(RobotMap.HallyPort);
-		schmencoder = new RooSyntheticEncoder (10, 99, 99);
+		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
 
 	}
 	
