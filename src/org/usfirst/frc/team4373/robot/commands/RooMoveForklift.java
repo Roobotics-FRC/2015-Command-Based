@@ -5,11 +5,11 @@ import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.subsystems.RooForklift;
 
-public class MoveForklift extends CommandBase {
+public class RooMoveForklift extends CommandBase {
 	private OI oi;
 	int lockPosition;
 	
-	public MoveForklift() {
+	public RooMoveForklift() {
 		requires(Robot.rooForkLift);
 		oi = CommandBase.getOI();
 		lockPosition = RobotMap.ForkliftStartingPosition;

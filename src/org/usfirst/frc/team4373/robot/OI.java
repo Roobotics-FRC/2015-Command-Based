@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4373.input.*;
-import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4373.robot.commands.RooDriveFree;
 import org.usfirst.frc.team4373.robot.commands.RooSwitchDriveMode;
 
