@@ -17,6 +17,8 @@ public class RobotMap {
 	public static int rightMotorPort = 0;
 	public static int strafeMotorPort = 2;
 	public static final int IntakeMotorPort = 3;
+	public static final int leftWingMotorPort = 4;
+	public static final int rightWingMotorPort = 5;
 	
 	
 	public static int yawAxis = 2;
