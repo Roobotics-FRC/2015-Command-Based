@@ -3,7 +3,7 @@ package org.usfirst.frc.team4373.robot.subsystems;
 import org.usfirst.frc.team4373.robot.Robot;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.commands.CommandBase;
-import org.usfirst.frc.team4373.robot.commands.MoveForklift;
+import org.usfirst.frc.team4373.robot.commands.RooMoveForklift;
 import org.usfirst.frc.team4373.robot.commands.RooIntakeCommand;
 
 import util.RooMath;
@@ -29,7 +29,7 @@ public class RooForklift extends Subsystem {
 	}
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new MoveForklift());
+		setDefaultCommand(new RooMoveForklift());
 		
 	}
 	public void set(double val) {

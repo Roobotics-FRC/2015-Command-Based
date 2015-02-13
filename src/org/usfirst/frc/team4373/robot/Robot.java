@@ -7,9 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4373.robot.commands.CommandBase;
-import org.usfirst.frc.team4373.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4373.robot.commands.RooDrive;
-import org.usfirst.frc.team4373.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4373.robot.subsystems.*;
 
 /**
@@ -21,7 +19,6 @@ import org.usfirst.frc.team4373.robot.subsystems.*;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
 	public static RooForklift rooForkLift = new RooForklift();
 	public static RooIntake rooIntake = new RooIntake ();
@@ -35,7 +32,6 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period jri
     	CommandBase.init();
-        autonomousCommand = new ExampleCommand();
     }
 	
 	public void disabledPeriodic() {
