@@ -28,7 +28,7 @@ public class RooDriveLocked extends RooDrive {
 		//Cook the Joystick inputs depending on whether or not we're going for aboslute direction
 		//or robot-reletive direction
 		//TODO: does this go here?
-		if (oi.getButton(RobotMap.absoluteDirectionModeEnable)){
+		if (oi.getDriveStickButton(RobotMap.absoluteDirectionModeEnable)){
 			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
 			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
 			stickF = newStickF;

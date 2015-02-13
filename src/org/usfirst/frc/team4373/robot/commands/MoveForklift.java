@@ -7,9 +7,12 @@ import org.usfirst.frc.team4373.robot.subsystems.RooForklift;
 
 public class MoveForklift extends CommandBase {
 	private OI oi;
+	int lockPosition;
+	
 	public MoveForklift() {
 		requires(Robot.rooForkLift);
 		oi = CommandBase.getOI();
+		lockPosition = RobotMap.ForkliftStartingPosition;
 	}
 
 	@Override
@@ -17,18 +20,21 @@ public class MoveForklift extends CommandBase {
 		// TODO Auto-generated method stub
 		
 	}
-
 	@Override
 	protected void execute() {
-		if (oi.getButton(RobotMap.FORKLIFT_P1)) { // Or something
-			Robot.rooForkLift.moveToPosition((int)RooForklift.p1);
+		if (oi.getOperatorButton(RobotMap.FORKLIFT_P1)) { // Or something
+			lockPosition = RooForklift.p1;
 		}
-		else if (oi.getButton(6))
-			Robot.rooForkLift.set(1.0D);
-		else if (oi.getButton(4))
-			Robot.rooForkLift.set(-1.0D);
+		else if (oi.getOperatorButton(3)) {
+			Robot.rooForkLift.set(CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 0.3));
+			lockPosition = oi.getSchmencoderPosition();
+		}
+		else if (oi.getOperatorButton(2)) {
+			Robot.rooForkLift.set(-0.2D);
+			lockPosition = oi.getSchmencoderPosition();
+		}
 		else
-			Robot.rooForkLift.set(0.0D);
+			Robot.rooForkLift.moveToPosition(lockPosition);
 	}
 
 	@Override

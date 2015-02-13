@@ -13,10 +13,11 @@ public class RooGyroscope extends Gyro {
 	public RooGyroscope(int channel) {
 		super(channel);
 		initAngle = this.getAngle();
+		rooSaveAngle();
 	}
 	
 	public double rooGetAngle () {
-		CommandBase.getOI().rd.putNumber("Actual Gyro", this.getAngle());
+//		CommandBase.getOI().rd.putNumber("Actual Gyro", this.getAngle());
 		double angle = this.getAngle();
 		angle = angle % (RooMath.getSign(angle)*360);
 		if (angle < -180)
@@ -28,7 +29,7 @@ public class RooGyroscope extends Gyro {
 	
 	public void rooSaveAngle (){
 		double angle = rooGetAngle();
-		CommandBase.getOI().rd.putNumber("Current saved angle: ", angle);
+//		CommandBase.getOI().rd.putNumber("Current saved angle: ", angle);
 		savedAngle = angle;
 	}
 	

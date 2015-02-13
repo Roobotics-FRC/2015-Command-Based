@@ -18,13 +18,14 @@ public class RooSyntheticEncoder {
 		private boolean activated;
 		private int motorDirection;
 		private double position = 0;
-		public State (DigitalInput hally){
-			activated = hally.get();
+		public State (boolean activated){
+			this.activated = activated;
 			motorDirection = Robot.rooForkLift.getDirection();
 			position = currentPosition;
+			
 		}
 		public boolean isActivated() {
-			return !activated;
+			return activated;
 		}
 		public int getMotorDirection() {
 			return motorDirection;
@@ -39,23 +40,28 @@ public class RooSyntheticEncoder {
 		this.numberOfPositions = numberOfPositions;
 		this.currentPosition = startingPosition;
 	}
-	int i=0;
+	protected int i=0;
 	public void iterate (){
 		++i;
-		CommandBase.getOI().rd.putNumber("Hally Position: ", currentPosition);
-		CommandBase.getOI().rd.putBoolean("Hally activated: ", hally.get());
+		boolean activated = hally.get();
 		if (previousState != null) { // If this is not the first iteration
-			CommandBase.getOI().rd.putString("Previous state not null", "yep");
-			if (hally.get()) {
-				if (!previousState.isActivated()) {
-					int direction = Robot.rooForkLift.getDirection();
-					CommandBase.getOI().rd.putNumber("Incrementing by:", direction);
-					currentPosition += direction;
+//			CommandBase.getOI().rd.putString("Previous state not null", "yep");
+			if (activated) {
+				if (previousState.isActivated() != activated) {
+					CommandBase.getOI().rd.putBoolean("Previous state enabled: ", previousState.isActivated());
+					CommandBase.getOI().rd.putBoolean("Current state enabled: ", activated);
+					if (Robot.rooForkLift.getDirection() == 1){
+						++currentPosition;
+					}else{
+						--currentPosition;
+					}
 				}
+				
+				
 			}
 		}
-		CommandBase.getOI().rd.putNumber("RSE: ", currentPosition);
-		previousState = new State(hally);
+		previousState = new State(activated);
+		CommandBase.getOI().rd.putNumber("Schmencoder Position: ", getPosition());
 	}
 	
 	public int getPosition(){

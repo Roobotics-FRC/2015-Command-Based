@@ -20,9 +20,9 @@ public class RooIntakeCommand extends CommandBase {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		if (oi.getButton(RobotMap.intakeButton)){
+		if (oi.getDriveStickButton(RobotMap.intakeButton)){
 			Robot.rooIntake.set(RooIntake.IN);
-		}else if (oi.getButton(3)){
+		}else if (oi.getDriveStickButton(3)){
 			Robot.rooIntake.set(RooIntake.OUT);
 		}else{
 			Robot.rooIntake.set(RooIntake.OFF);

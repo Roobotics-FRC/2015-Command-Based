@@ -17,10 +17,20 @@ public class RobotMap {
 	public static int rightMotorPort = 0;
 	public static int strafeMotorPort = 2;
 	public static final int IntakeMotorPort = 3;
+	
+	
 	public static int yawAxis = 2;
+	
+	//Chipsdick buttons:
+	public static final int lockRotationButton = 1;
 	public static int absoluteDirectionModeEnable = 11;
+	public static int intakeButton = 2;
+	
+	//OperatorStick buttons:
+	
+	
 	public static final int forkliftMotorPairPort = 4;
-	public static final int FORKLIFT_P1 = 3;
+	public static final int FORKLIFT_P1 = 4;
     
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:
@@ -28,13 +38,14 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	public static int gyroPort = 1;
-	public static int intakeButton = 2;
 	public static double driveMultiplier = .3;
-	public static int encoderPort1 = 1;
-	public static final int joystickPort = 0;
-	public static final int lockRotationButton = 1;
-	public static final int EncoderPort2 = 2;
+	
 	public static final int HallyPort = 3;
+	public static final int operatorStickPort = 1;
+	public static final int driveStickPort = 0;
+	
+	//Constants
+	public static final int ForkliftStartingPosition = 6;
 	
 	
 }

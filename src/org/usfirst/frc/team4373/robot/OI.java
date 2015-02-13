@@ -14,11 +14,13 @@ import org.usfirst.frc.team4373.robot.commands.RooSwitchDriveMode;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private RooJoystick stick;
+	//drive stick, aka chipstick, aka stick1 --> contains functionality that the driver themselves will need to wield
+	private RooJoystick driveStick;
+	//operatorStick, aka stick2 --> for brainy judgement calls like motorpowers and potentially the forklift or wings.
+	private RooJoystick operatorStick;
 	private RooGyroscope gyro;
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
-	private RooEncoder encoder;
 	private RooSyntheticEncoder schmencoder;
 	
 	
@@ -26,17 +28,19 @@ public class OI {
 	private JoystickButton lockRotation;
 	
 	public double getForwardAxis() {
-		return stick.rooGetY();
+		return driveStick.rooGetY();
 	}
 	public double getRightAxis() {
-		return stick.rooGetX();
+		return driveStick.rooGetX();
 	}
-	
 	public double getYaw(){
-		return stick.rooGetYaw();
+		return driveStick.rooGetYaw();
 	}
-	public boolean getButton(int button){
-		return stick.getRawButton(button);
+	public boolean getDriveStickButton(int button){
+		return driveStick.getRawButton(button);
+	}
+	public boolean getOperatorButton(int button){
+		return operatorStick.getRawButton(button);
 	}
 	
 	
@@ -51,9 +55,6 @@ public class OI {
 	public double getSavedAngleFromSavedAngle(){
 		return gyro.rooGetAngleFromSavedAngle();
 	}
-	public double getEncoderPosition() {
-		return encoder.rooGetAngle();
-	}
 	public int getSchmencoderPosition(){
 		return schmencoder.getPosition();
 	}
@@ -61,11 +62,11 @@ public class OI {
 	
 	
 	public OI() {
-		stick = new RooJoystick(RobotMap.joystickPort);
+		driveStick = new RooJoystick(RobotMap.driveStickPort);
+		operatorStick = new RooJoystick(RobotMap.operatorStickPort);
+		
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
-		
-		encoder = new RooEncoder(RobotMap.encoderPort1, RobotMap.EncoderPort2);
 		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
 
 	}
@@ -73,7 +74,7 @@ public class OI {
 	
 	public void init (){
 		//This stuff has to happen ouside the constructor because they reference OI
-		lockRotation = new JoystickButton (stick, RobotMap.lockRotationButton);
+		lockRotation = new JoystickButton (driveStick, RobotMap.lockRotationButton);
 		lockRotation.whenPressed(new RooSwitchDriveMode());
 		lockRotation.toggleWhenPressed(new RooDriveFree());
 	}
