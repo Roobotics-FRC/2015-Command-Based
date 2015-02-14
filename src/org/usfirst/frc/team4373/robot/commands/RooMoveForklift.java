@@ -12,7 +12,7 @@ public class RooMoveForklift extends CommandBase {
 	public RooMoveForklift() {
 		requires(Robot.rooForkLift);
 		oi = CommandBase.getOI();
-		lockPosition = RobotMap.ForkliftStartingPosition;
+		lockPosition = 0;
 	}
 
 	@Override
@@ -22,19 +22,36 @@ public class RooMoveForklift extends CommandBase {
 	}
 	@Override
 	protected void execute() {
-		if (oi.getOperatorButton(RobotMap.FORKLIFT_P1)) { // Or something
-			lockPosition = RooForklift.p1;
+		CommandBase.getOI().rd.putNumber("Forklift Up Power", CommandBase.getOI().getOperatorThrottle());
+		
+		if (oi.rd.rooGetBoolean("Reset Schmencoder", false)){
+			oi.resetSchmencoder();
+			lockPosition = 0;
+			Robot.rooForkLift.moveToPosition(lockPosition);
 		}
-		else if (oi.getOperatorButton(3)) {
+		else if (oi.getOperatorButton(RobotMap.FORKLIFT_P1)) { // Or something
+			lockPosition = RooForklift.p1;
+			Robot.rooForkLift.moveToPosition(lockPosition);
+		}
+		else if (oi.getDriveStickButton(RobotMap.DriverLiftForkLift)) {
 			Robot.rooForkLift.set(CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 0.3));
 			lockPosition = oi.getSchmencoderPosition();
 		}
-		else if (oi.getOperatorButton(2)) {
-			Robot.rooForkLift.set(-0.2D);
+		else if (oi.getDriveStickButton(RobotMap.DriverLowerForkLift)) {
+			Robot.rooForkLift.set(-1 * CommandBase.getOI().rd.rooGetNumber("Forklift Dn Power", 0.3));
 			lockPosition = oi.getSchmencoderPosition();
 		}
-		else
+		else if (oi.getOperatorButton(RobotMap.OperatorLiftForkLift)) {
+			Robot.rooForkLift.set(CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 0.3));
+			lockPosition = oi.getSchmencoderPosition();
+		}
+		else if (oi.getOperatorButton(RobotMap.OperatorLowerForkLift)) {
+			Robot.rooForkLift.set(-1 * CommandBase.getOI().rd.rooGetNumber("Forklift Dn Power", 0.3));
+			lockPosition = oi.getSchmencoderPosition();
+		}
+		else{
 			Robot.rooForkLift.moveToPosition(lockPosition);
+		}
 	}
 
 	@Override

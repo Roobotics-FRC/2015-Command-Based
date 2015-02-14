@@ -2,6 +2,7 @@ package org.usfirst.frc.team4373.robot.commands;
 
 import org.usfirst.frc.team4373.robot.*;
 
+import util.RooMath;
 import edu.wpi.first.wpilibj.command.Command;
 
 
@@ -80,7 +81,7 @@ public abstract class RooDrive extends CommandBase {
 		if (Math.abs(y2) < .001){
 			y2 = 0;
 		}
-		return y2;
+		return y2 * RooMath.getSign(y1);
 	}
 	
 	protected static double getRightMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
@@ -92,7 +93,7 @@ public abstract class RooDrive extends CommandBase {
 		if (Math.abs(x2) < .001){
 			x2 = 0;
 		}
-		return x2;
+		return x2 * RooMath.getSign(x1);
 	}
 
 }

@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4373.robot.commands;
 
 import org.usfirst.frc.team4373.robot.OI;
+import org.usfirst.frc.team4373.robot.Robot;
+import org.usfirst.frc.team4373.robot.RobotMap;
 
 public class RooMoveWings extends CommandBase {
 	private OI oi;
@@ -20,15 +22,16 @@ public class RooMoveWings extends CommandBase {
 	@Override
 	protected void execute() {
 		power = oi.rd.rooGetNumber("Wing power: ", power);
-		if (oi.getDriveStickButton(6))
+		if (oi.getOperatorButton(RobotMap.liftLeftWing))
 			Robot.wings.setLeft(power);
-		else if (oi.getDriveStickButton(7))
+		else if (oi.getOperatorButton(RobotMap.lowerLeftWing))
 			Robot.wings.setLeft(-power);
 		else
 			Robot.wings.setLeft(0.0D);
-		if (oi.getDriveStickButton(11))
+		
+		if (oi.getOperatorButton(RobotMap.liftRightWing))
 			Robot.wings.setRight(power);
-		else if (oi.getDriveStickButton(10))
+		else if (oi.getOperatorButton(RobotMap.lowerRightWing))
 			Robot.wings.setRight(-power);
 		else
 			Robot.wings.setRight(0.0D);

@@ -81,5 +81,16 @@ public class OI {
 	public void iterate (){
 		schmencoder.iterate();
 	}
+	public void resetSchmencoder() {
+		schmencoder.reset();
+		
+	}
+	
+	public void resetGyro (){
+		gyro.reset();
+	}
+	public double getOperatorThrottle() {
+		return operatorStick.getThrottle();
+	}
 }
 

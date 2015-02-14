@@ -74,4 +74,9 @@ public class RooJoystick extends Joystick {
 		return Math.atan(yAxis / xAxis);
 	}
 	
+//	public boolean needsCalibration() {
+//		double xA
+//	}
+	
+	
 }

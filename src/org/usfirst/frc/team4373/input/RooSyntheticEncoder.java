@@ -67,6 +67,10 @@ public class RooSyntheticEncoder {
 	public int getPosition(){
 		return currentPosition;
 	}
+	 
+	public void reset(){
+		currentPosition = 0;
+	}
 	
 
 }

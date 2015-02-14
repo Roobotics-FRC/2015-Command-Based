@@ -14,8 +14,7 @@ public class RooForklift extends Subsystem {
 	private Talon motorPair;
 	private boolean reversed = false;
 	public static final int p1=13,p2=2,p3=3,p4=4;
-	private static final double deadZone = 1;
-	private static final double power = 0.3;
+	private static final double deadZone = 0;
 	
 	public RooForklift() {
 		motorPair = new Talon(RobotMap.forkliftMotorPairPort);
@@ -23,7 +22,7 @@ public class RooForklift extends Subsystem {
 	public void moveToPosition(int position) {
 		int distanceFromTarget = CommandBase.getOI().getSchmencoderPosition() - position;
 		if (Math.abs(distanceFromTarget) > deadZone)
-			motorPair.set(power * -1 * (RooMath.getSign(distanceFromTarget)));
+			motorPair.set(CommandBase.getOI().rd.getNumber("Forklift Up Power", 0.3) * -1 * (RooMath.getSign(distanceFromTarget)));
 		else
 			motorPair.set(0.0D);
 	}

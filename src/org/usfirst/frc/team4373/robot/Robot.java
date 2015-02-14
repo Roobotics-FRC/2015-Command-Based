@@ -22,7 +22,7 @@ public class Robot extends IterativeRobot {
 	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
 	public static RooForklift rooForkLift = new RooForklift();
 	public static RooIntake rooIntake = new RooIntake ();
-
+	public static RooWings wings = new RooWings ();
     Command autonomousCommand;
 
     /**
@@ -56,6 +56,7 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
+    	CommandBase.getOI().resetGyro();
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
 

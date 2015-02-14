@@ -30,7 +30,9 @@ public class RooDriveLocked extends RooDrive {
 		//TODO: does this go here?
 		if (oi.getDriveStickButton(RobotMap.absoluteDirectionModeEnable)){
 			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+			oi.rd.putNumber("Fudged Straight Value", newStickF);
 			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+			oi.rd.putNumber("Fudged Right Value", stickR);
 			stickF = newStickF;
 		}
 		//temporary drive disable for safe testing
@@ -39,7 +41,6 @@ public class RooDriveLocked extends RooDrive {
 			//yawing the joystick should rotate the bot
 			Robot.rooDrivetrain.setLeft((Math.sqrt(Math.abs(tareAngle/180)) * RooMath.getSign(tareAngle)) + stickF);
 			Robot.rooDrivetrain.setRight(-(Math.sqrt(Math.abs(tareAngle/180)) * RooMath.getSign(tareAngle)) + stickF);
-			oi.rd.putNumber ("giving motors power= ", (Math.sqrt(tareAngle/180)*RooMath.getSign(tareAngle)) + stickF);
 			Robot.rooDrivetrain.setStrafe(stickR);
 		}
 		
