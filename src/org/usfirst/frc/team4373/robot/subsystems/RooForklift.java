@@ -22,7 +22,7 @@ public class RooForklift extends Subsystem {
 	public void moveToPosition(int position) {
 		int distanceFromTarget = CommandBase.getOI().getSchmencoderPosition() - position;
 		if (Math.abs(distanceFromTarget) > deadZone)
-			motorPair.set(CommandBase.getOI().rd.getNumber("Forklift Up Power", 0.3) * -1 * (RooMath.getSign(distanceFromTarget)));
+			motorPair.set(-1 * CommandBase.getOI().rd.getNumber("Forklift Up Power", 0.3) * (RooMath.getSign(distanceFromTarget)));
 		else
 			motorPair.set(0.0D);
 	}

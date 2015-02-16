@@ -6,8 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team4373.robot.commands.CommandBase;
-import org.usfirst.frc.team4373.robot.commands.RooDrive;
+
+
+
+import org.usfirst.frc.team4373.robot.commands.*;
 import org.usfirst.frc.team4373.robot.subsystems.*;
 
 /**
@@ -23,7 +25,7 @@ public class Robot extends IterativeRobot {
 	public static RooForklift rooForkLift = new RooForklift();
 	public static RooIntake rooIntake = new RooIntake ();
 	public static RooWings wings = new RooWings ();
-    Command autonomousCommand;
+    RooAutonBase autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -40,7 +42,25 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
+    	int mode = (int)CommandBase.getOI().rd.rooGetNumber("Auton mode: ", 0.0D);
+    	switch(mode) {
+    	case 0:
+    		autonomousCommand = new RooAutonRight();
+    		break;
+    	case 1:
+    		autonomousCommand = new RooAutonMid();
+    		break;
+    	case 2:
+    		autonomousCommand = new RooAutonLeft();
+    		break;
+    	case 7:
+    		autonomousCommand = new RooSexyAnimals();
+    		break;
+    	default:
+    		autonomousCommand = new RooAutonMid();
+    	}
         if (autonomousCommand != null) autonomousCommand.start();
+        
     }
 
     /**

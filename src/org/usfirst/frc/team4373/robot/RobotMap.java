@@ -29,6 +29,7 @@ public class RobotMap {
 	public static int intakeButton = 2;
 	public static final int DriverLiftForkLift = 6;
 	public static final int DriverLowerForkLift = 4;
+	public static final int StackToteButton = 2;
 	
 	//OperatorStick buttons:
 	public static final int FORKLIFT_P1 = 4;

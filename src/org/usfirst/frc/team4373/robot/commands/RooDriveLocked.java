@@ -29,11 +29,20 @@ public class RooDriveLocked extends RooDrive {
 		//or robot-reletive direction
 		//TODO: does this go here?
 		if (oi.getDriveStickButton(RobotMap.absoluteDirectionModeEnable)){
-			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
-			oi.rd.putNumber("Fudged Straight Value", newStickF);
-			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
-			oi.rd.putNumber("Fudged Right Value", stickR);
-			stickF = newStickF;
+//			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+//			oi.rd.putNumber("Fudged Straight Value", newStickF);
+//			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
+//			oi.rd.putNumber("Fudged Right Value", stickR);
+//			stickF = newStickF;
+			double gyroRad = (gyroAngle * Math.PI) / 180;
+			if (RooMath.getSign(Math.tan(gyroRad + (Math.PI/4))) == -1){
+				double temp = stickF;
+				stickF = stickR;
+				stickR = temp;
+			}
+			stickF *= RooMath.getSign(Math.cos(gyroRad + (Math.PI/4)));
+			stickR *= RooMath.getSign(Math.sin(gyroRad + (Math.PI/4)));
+			
 		}
 		//temporary drive disable for safe testing
 		if (oi.rd.getBoolean("Disable Drive", false) == false){

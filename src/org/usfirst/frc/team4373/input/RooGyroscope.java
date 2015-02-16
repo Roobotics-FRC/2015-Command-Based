@@ -18,6 +18,10 @@ public class RooGyroscope extends Gyro {
 	
 	public double rooGetAngle () {
 //		CommandBase.getOI().rd.putNumber("Actual Gyro", this.getAngle());
+		if (CommandBase.getOI().rd.rooGetBoolean("Reset Gyro", false)){
+			reset ();
+			return 0;
+		}
 		double angle = this.getAngle();
 		angle = angle % (RooMath.getSign(angle)*360);
 		if (angle < -180)

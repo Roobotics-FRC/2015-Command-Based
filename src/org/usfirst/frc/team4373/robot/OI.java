@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4373.input.*;
 import org.usfirst.frc.team4373.robot.commands.RooDriveFree;
+import org.usfirst.frc.team4373.robot.commands.RooDriveLocked;
+import org.usfirst.frc.team4373.robot.commands.RooStackTote;
 import org.usfirst.frc.team4373.robot.commands.RooSwitchDriveMode;
 
 /**
@@ -25,6 +27,7 @@ public class OI {
 	
 	
 	private JoystickButton lockRotation;
+	private JoystickButton stackTote;
 	
 	public double getForwardAxis() {
 		return driveStick.rooGetY();
@@ -64,7 +67,6 @@ public class OI {
 		driveStick = new RooJoystick(RobotMap.driveStickPort);
 		operatorStick = new RooJoystick(RobotMap.operatorStickPort);
 		
-		gyro = new RooGyroscope(RobotMap.gyroPort);
 		rd = new RooDashboard();
 		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
 
@@ -75,7 +77,11 @@ public class OI {
 		//This stuff has to happen ouside the constructor because they reference OI
 		lockRotation = new JoystickButton (driveStick, RobotMap.lockRotationButton);
 		lockRotation.whenPressed(new RooSwitchDriveMode());
-		lockRotation.toggleWhenPressed(new RooDriveFree());
+		lockRotation.toggleWhenPressed(new RooDriveLocked());
+		gyro = new RooGyroscope(RobotMap.gyroPort);
+		
+		stackTote = new JoystickButton (driveStick, RobotMap.StackToteButton);
+		stackTote.whenPressed(new RooStackTote());
 	}
 	
 	public void iterate (){
@@ -90,7 +96,10 @@ public class OI {
 		gyro.reset();
 	}
 	public double getOperatorThrottle() {
-		return operatorStick.getThrottle();
+		double value = operatorStick.getRawAxis(2);
+		//converts from {-1,1} to {1,0}
+		value =  (1 - ((value + 1)/2)); 
+		return value;
 	}
 }
 
