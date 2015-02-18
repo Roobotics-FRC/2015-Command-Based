@@ -41,6 +41,7 @@ public class RooStackTote extends CommandBase {
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
 		return false;
+		//Throbbing Penis Up in y'alls cooch
 	}
 
 	@Override
