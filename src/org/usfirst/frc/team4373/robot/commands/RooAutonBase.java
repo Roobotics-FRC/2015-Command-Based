@@ -1,9 +1,18 @@
 package org.usfirst.frc.team4373.robot.commands;
 
-public class RooAutonBase extends CommandBase {
+import org.usfirst.frc.team4373.robot.OI;
+import org.usfirst.frc.team4373.robot.Robot;
 
+public class RooAutonBase extends CommandBase {
+	protected OI oi;
+	
+	RooAutonBase() {
+		requires(Robot.wings);
+	}
+	
 	@Override
 	protected void initialize() {
+		oi = CommandBase.getOI();
 		// TODO Auto-generated method stub
 
 	}

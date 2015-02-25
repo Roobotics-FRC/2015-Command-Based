@@ -23,6 +23,7 @@ public class OI {
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
 	private RooSyntheticEncoder schmencoder;
+	private DigitalInput frontBumperLimitSwitch, leftWingLimitSwitch, rightWingLimitSwitch;
 	
 	
 	
@@ -60,13 +61,23 @@ public class OI {
 	public int getSchmencoderPosition(){
 		return schmencoder.getPosition();
 	}
-	
+	public boolean getFrontLimitSwitch() {
+		return frontBumperLimitSwitch.get();
+	}
+	public boolean getLeftWingLimitSwitch() {
+		return leftWingLimitSwitch.get();
+	}
+	public boolean getRightWingLimitSwitch() {
+		return rightWingLimitSwitch.get();
+	}
 	
 	
 	public OI() {
 		driveStick = new RooJoystick(RobotMap.driveStickPort);
 		operatorStick = new RooJoystick(RobotMap.operatorStickPort);
-		
+		frontBumperLimitSwitch = new DigitalInput(RobotMap.FRONT_BUMBER_PORT);
+		leftWingLimitSwitch = new DigitalInput(RobotMap.LEFT_WING_SWITCH_PORT);
+		rightWingLimitSwitch = new DigitalInput(RobotMap.RIGHT_WING_SWITCH_PORT);
 		rd = new RooDashboard();
 		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
 
@@ -79,7 +90,6 @@ public class OI {
 		lockRotation.whenPressed(new RooSwitchDriveMode());
 		lockRotation.toggleWhenPressed(new RooDriveLocked());
 		gyro = new RooGyroscope(RobotMap.gyroPort);
-		
 		stackTote = new JoystickButton (driveStick, RobotMap.StackToteButton);
 		stackTote.whenPressed(new RooStackTote());
 	}

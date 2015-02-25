@@ -15,7 +15,7 @@ public class RooMoveWings extends CommandBase {
 
 	@Override
 	protected void initialize() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubx
 		
 	}
 
