@@ -50,7 +50,7 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
 	
 	public static int gyroPort = 1;
-	public static double driveMultiplier = .3;
+	public static double driveMultiplier = 1;
 	
 	public static final int HallyPort = 3;
 	public static final int operatorStickPort = 1;
