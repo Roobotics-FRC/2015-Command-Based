@@ -17,8 +17,6 @@ public class RooAutonGrabBin extends RooAutonBase {
 		else if (Robot.wings.moveLeftUntilSwitch()) {
 			
 		}
-		
-		tick=0;
 	}
 
 

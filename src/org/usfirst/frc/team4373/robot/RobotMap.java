@@ -20,9 +20,9 @@ public class RobotMap {
 	public static final int leftWingMotorPort = 6;
 	public static final int forkliftMotorPairPort = 4;
 	public static final int rightWingMotorPort = 5;
-	public static final int FRONT_BUMBER_PORT = 0xffffff;
-	public static final int LEFT_WING_SWITCH_PORT = 0xffffff;
-	public static final int RIGHT_WING_SWITCH_PORT = 0xffffff;
+	public static final int FRONT_BUMBER_PORT = 2;
+	public static final int LEFT_WING_SWITCH_PORT = 1;
+	public static final int RIGHT_WING_SWITCH_PORT = 0;
 	
 	public static int yawAxis = 2;
 	

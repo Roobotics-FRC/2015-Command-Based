@@ -49,10 +49,6 @@ public class RooDriveFree extends RooDrive {
 				Robot.rooDrivetrain.setRight(stickYaw + stickF);
 				Robot.rooDrivetrain.setStrafe(stickR);
 		}
-		
-		oi.rd.putNumber("Stick F", stickF);
-		oi.rd.putNumber("Stick R", stickR);
-		oi.rd.putNumber("Stick Yaw", stickYaw);
 		oi.rd.putNumber("Gyro", gyroAngle);
 	}
 

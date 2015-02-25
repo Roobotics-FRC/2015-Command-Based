@@ -54,9 +54,7 @@ public class RooDriveLocked extends RooDrive {
 		}
 		
 		//We really need to get the SmartDashboard into it's officail home, would that be in OI?
-		oi.rd.putNumber("Stick F", stickF);
-		oi.rd.putNumber("Stick R", stickR);
-		oi.rd.putNumber("Stick Yaw", stickYaw);
+		
 		oi.rd.putNumber("Gyro", gyroAngle);
 	}
 }

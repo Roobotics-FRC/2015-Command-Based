@@ -10,9 +10,6 @@ public class RooJoystick extends Joystick {
 	
 	public RooJoystick(int port) {
 		super(port);
-		SmartDashboard.putNumber("X threshold", xThreshold);
-		SmartDashboard.putNumber("Y threshold", yThreshold);
-		SmartDashboard.putNumber("Yaw Threshold", yawThreshold);
 	}
 	
 	public double getXThreshold() {
@@ -20,21 +17,18 @@ public class RooJoystick extends Joystick {
 	}
 	public void setXThreshold(double threshold) {
 		xThreshold = threshold;
-		SmartDashboard.putNumber("X threshold", xThreshold);
 	}
 	public double getYThreshold() {
 		return yThreshold;
 	}
 	public void setYThreshold(double threshold) {
 		yThreshold = threshold;
-		SmartDashboard.putNumber("Y threshold", yThreshold);
 	}
 	public double getYawThreshold(){
 		return yawThreshold;
 	}
 	public void setYawThreshold(double threshold){
 		yawThreshold = threshold;
-		SmartDashboard.putNumber("Yaw Threshold",  yawThreshold);
 	}
 	
 	public double rooGetX() {

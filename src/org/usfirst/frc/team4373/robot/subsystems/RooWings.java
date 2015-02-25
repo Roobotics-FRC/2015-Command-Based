@@ -28,11 +28,11 @@ public class RooWings extends Subsystem {
 	}
 
 	public void setLeft (double speed){
-		leftWing.set(oi.rd.rooGetBoolean("reverse left wing", false) ? - speed : speed);
+		leftWing.set(/*oi.rd.rooGetBoolean("reverse left wing", false) ? - speed : */speed);
 	}
 
 	public void setRight (double speed){
-		rightWing.set(oi.rd.rooGetBoolean("reverse right wing", false) ? -speed : speed);
+		rightWing.set(/*oi.rd.rooGetBoolean("reverse right wing", false) ? -speed : */speed);
 	}
 
 	public boolean moveLeftUntilSwitch() {
