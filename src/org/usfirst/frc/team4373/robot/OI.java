@@ -86,11 +86,11 @@ public class OI {
 	
 	public void init (){
 		//This stuff has to happen ouside the constructor because they reference OI
-		lockRotation = new JoystickButton (driveStick, RobotMap.lockRotationButton);
+		lockRotation = new JoystickButton (driveStick, RobotMap.lockRotationButton[RobotMap.chipsDickType]);
 		lockRotation.whenPressed(new RooSwitchDriveMode());
 		lockRotation.toggleWhenPressed(new RooDriveLocked());
 		gyro = new RooGyroscope(RobotMap.gyroPort);
-		stackTote = new JoystickButton (driveStick, RobotMap.StackToteButton);
+		stackTote = new JoystickButton (driveStick, RobotMap.StackToteButton[RobotMap.chipsDickType]);
 		stackTote.whenPressed(new RooStackTote());
 	}
 	//

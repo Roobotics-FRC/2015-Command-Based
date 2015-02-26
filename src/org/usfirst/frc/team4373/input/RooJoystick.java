@@ -48,7 +48,7 @@ public class RooJoystick extends Joystick {
 	}
 	
 	public double rooGetYaw(){
-		double axis = this.getRawAxis(RobotMap.yawAxis);
+		double axis = this.getRawAxis(RobotMap.yawAxis[RobotMap.chipsDickType]);
 		if(Math.abs(axis) >yawThreshold){
 			return axis * 0.5;
 		}

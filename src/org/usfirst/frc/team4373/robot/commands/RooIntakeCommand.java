@@ -20,7 +20,7 @@ public class RooIntakeCommand extends CommandBase {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		if (oi.getDriveStickButton(RobotMap.intakeButton)){
+		if (oi.getDriveStickButton(RobotMap.intakeButton[RobotMap.chipsDickType])){
 			Robot.rooIntake.set(RooIntake.IN);
 		}else if (oi.getDriveStickButton(3)){
 			Robot.rooIntake.set(RooIntake.OUT);

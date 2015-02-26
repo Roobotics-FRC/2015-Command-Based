@@ -33,11 +33,11 @@ public class RooMoveForklift extends CommandBase {
 			lockPosition = RooForklift.p1;
 			Robot.rooForkLift.moveToPosition(lockPosition);
 		}
-		else if (oi.getDriveStickButton(RobotMap.DriverLiftForkLift)) {
+		else if (oi.getDriveStickButton(RobotMap.DriverLiftForkLift[RobotMap.chipsDickType])) {
 			Robot.rooForkLift.set(CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 1));
 			lockPosition = oi.getSchmencoderPosition();
 		}
-		else if (oi.getDriveStickButton(RobotMap.DriverLowerForkLift)) {
+		else if (oi.getDriveStickButton(RobotMap.DriverLowerForkLift[RobotMap.chipsDickType])) {
 			Robot.rooForkLift.set(-1 * CommandBase.getOI().rd.rooGetNumber("Forklift Dn Power", 1));
 			lockPosition = oi.getSchmencoderPosition();
 		}
