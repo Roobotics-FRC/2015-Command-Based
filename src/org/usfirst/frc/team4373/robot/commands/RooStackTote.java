@@ -22,10 +22,10 @@ public class RooStackTote extends CommandBase {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-		int ToteTallness = (int) oi.rd.rooGetNumber("Hally Ticks per Tote", 3);
+		int ToteTallness = (int) oi.rd.rooGetNumber("Hally Ticks per Tote", 4);
 		int baseline = oi.getSchmencoderPosition();
 		int target = baseline - ToteTallness;
-		while (oi.getSchmencoderPosition() > target){
+		while (oi.getSchmencoderPosition() > target && !(oi.getForkLiftBottomLimitSwitch())){
 			CommandBase.getOI().iterate();
 			Robot.rooForkLift.set(-1 * CommandBase.getOI().rd.rooGetNumber("Forklift Dn Power", 0.3));
 		}

@@ -35,9 +35,7 @@ public class RooDriveFree extends RooDrive {
 		//TODO: does this go here?
 		if (oi.getDriveStickButton(RobotMap.absoluteDirectionModeEnable[RobotMap.chipsDickType])){
 			double newStickF = getForwardMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
-			oi.rd.putNumber("Fudged Straight Value", newStickF);
 			stickR = getRightMagnitudeFromFieldwise (stickR, stickF, gyroAngle);
-			oi.rd.putNumber("Fudged Right Value", stickR);
 			stickF = newStickF;
 		}
 		

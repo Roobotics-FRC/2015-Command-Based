@@ -23,7 +23,7 @@ public class OI {
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
 	private RooSyntheticEncoder schmencoder;
-	private DigitalInput frontBumperLimitSwitch, leftWingLimitSwitch, rightWingLimitSwitch;
+	private DigitalInput frontBumperLimitSwitch, leftWingLimitSwitch, rightWingLimitSwitch, forkLiftBottomSwitch;
 	
 	
 	
@@ -69,6 +69,9 @@ public class OI {
 	}
 	public boolean getRightWingLimitSwitch() {
 		return rightWingLimitSwitch.get();
+	} 
+	public boolean getForkLiftBottomLimitSwitch(){
+		return forkLiftBottomSwitch.get();
 	}
 	
 	
@@ -78,6 +81,7 @@ public class OI {
 		frontBumperLimitSwitch = new DigitalInput(RobotMap.FRONT_BUMBER_PORT);
 		leftWingLimitSwitch = new DigitalInput(RobotMap.LEFT_WING_SWITCH_PORT);
 		rightWingLimitSwitch = new DigitalInput(RobotMap.RIGHT_WING_SWITCH_PORT);
+		forkLiftBottomSwitch = new DigitalInput(RobotMap.FL_BOTTOM_SWITCH_PORT);
 		rd = new RooDashboard();
 		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
 

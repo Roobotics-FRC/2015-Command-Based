@@ -20,19 +20,23 @@ public class RobotMap {
 	public static final int leftWingMotorPort = 6;
 	public static final int forkliftMotorPairPort = 4;
 	public static final int rightWingMotorPort = 5;
+	
+	//limit Switches
+	public static final int FL_BOTTOM_SWITCH_PORT = 4;
+	public static final int HallyPort = 3;
 	public static final int FRONT_BUMBER_PORT = 2;
 	public static final int LEFT_WING_SWITCH_PORT = 1;
 	public static final int RIGHT_WING_SWITCH_PORT = 0;
 	
 	
-	public static int[] yawAxis = {2, 2};
+	public static int[] yawAxis = {2, 4};
 	
 	//Chipsdick buttons:
 	public static final int[] lockRotationButton = {1, 3};
 	public static int[] absoluteDirectionModeEnable = {11, 2};
 	public static int[] intakeButton = {2, 6};
-	public static final int[] DriverLiftForkLift = {6, 4};
-	public static final int[] DriverLowerForkLift = {4, 1};
+	public static final int[] DriverLiftForkLift = {6, 1};
+	public static final int[] DriverLowerForkLift = {4, 4};
 	public static final int[] StackToteButton = {2, 5};
 	
 	public static final int chipsDickType = 1;
@@ -56,7 +60,6 @@ public class RobotMap {
 	public static int gyroPort = 1;
 	public static double driveMultiplier = 1;
 	
-	public static final int HallyPort = 3;
 	public static final int operatorStickPort = 1;
 	public static final int driveStickPort = 0;
 	

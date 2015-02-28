@@ -48,8 +48,6 @@ public class RooSyntheticEncoder {
 //			CommandBase.getOI().rd.putString("Previous state not null", "yep");
 			if (activated) {
 				if (previousState.isActivated() != activated) {
-					CommandBase.getOI().rd.putBoolean("Previous state enabled: ", previousState.isActivated());
-					CommandBase.getOI().rd.putBoolean("Current state enabled: ", activated);
 					if (Robot.rooForkLift.getDirection() == 1){
 						++currentPosition;
 					}else{
