@@ -32,25 +32,29 @@ public class RobotMap {
 	public static int[] yawAxis = {2, 4};
 	
 	//Chipsdick buttons:
-	public static final int[] lockRotationButton = {1, 3};
+	public static final int[] lockRotationButton = {8, 3};
 	public static int[] absoluteDirectionModeEnable = {11, 2};
 	public static int[] intakeButton = {2, 6};
-	public static final int[] DriverLiftForkLift = {6, 1};
-	public static final int[] DriverLowerForkLift = {4, 4};
-	public static final int[] StackToteButton = {2, 5};
+	public static final int[] DriverLiftForkLift = {6, 4};
+	public static final int[] DriverLowerForkLift = {4, 1};
+	public static final int[] StackToteButton = {3, 5};
+	public static final int[] SlowUpButton = {1, 8};
 	
-	public static final int chipsDickType = 1;
+	public static final int chipsDickType = 0;
 	//1 for xbax, 0 for yawstick
 	
 	//OperatorStick buttons:
-	public static final int FORKLIFT_P1 = 4;
 	public static final int liftLeftWing = 6;
 	public static final int lowerLeftWing = 7;
-	public static final int liftRightWing = 11;
-	public static final int lowerRightWing = 10;
-	public static final int OperatorLiftForkLift = 3;
-	public static final int OperatorLowerForkLift = 2;
+	public static final int liftRightWing = 7;
+	public static final int lowerRightWing = 6;
+	public static final int OperatorLiftForkLift = 11;
+	public static final int OperatorLowerForkLift = 10;
 	public static final int ResetForkliftSchmencoder = 1;
+	public static final int BumpRight = 5;
+	public static final int BumpFw = 3;
+	public static final int BumpLeft = 4;
+	public static final int BumpBack = 2;
 	
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:

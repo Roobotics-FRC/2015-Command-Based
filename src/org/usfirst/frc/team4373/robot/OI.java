@@ -5,8 +5,12 @@ import edu.wpi.first.wpilibj.buttons.*;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4373.input.*;
+import org.usfirst.frc.team4373.robot.commands.RooBackBump;
 import org.usfirst.frc.team4373.robot.commands.RooDriveFree;
 import org.usfirst.frc.team4373.robot.commands.RooDriveLocked;
+import org.usfirst.frc.team4373.robot.commands.RooFwBump;
+import org.usfirst.frc.team4373.robot.commands.RooLeftBump;
+import org.usfirst.frc.team4373.robot.commands.RooRightBump;
 import org.usfirst.frc.team4373.robot.commands.RooStackTote;
 import org.usfirst.frc.team4373.robot.commands.RooSwitchDriveMode;
 
@@ -22,13 +26,30 @@ public class OI {
 	private RooGyroscope gyro;
 	//screw the police i'm not making all of those gets and sets
 	public RooDashboard rd;
+//	private USBCamera camera;
 	private RooSyntheticEncoder schmencoder;
 	private DigitalInput frontBumperLimitSwitch, leftWingLimitSwitch, rightWingLimitSwitch, forkLiftBottomSwitch;
 	
-	
+	private Button bumpRight;
+	private Button bumpBack;
+	private Button bumpFw;
+	private Button bumpLeft;
 	
 	private JoystickButton lockRotation;
 	private JoystickButton stackTote;
+	
+	public OI() {
+		driveStick = new RooJoystick(RobotMap.driveStickPort);
+		operatorStick = new RooJoystick(RobotMap.operatorStickPort);
+		frontBumperLimitSwitch = new DigitalInput(RobotMap.FRONT_BUMBER_PORT);
+		leftWingLimitSwitch = new DigitalInput(RobotMap.LEFT_WING_SWITCH_PORT);
+		rightWingLimitSwitch = new DigitalInput(RobotMap.RIGHT_WING_SWITCH_PORT);
+		forkLiftBottomSwitch = new DigitalInput(RobotMap.FL_BOTTOM_SWITCH_PORT);
+		rd = new RooDashboard();
+		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
+
+	}
+	
 	
 	public double getForwardAxis() {
 		return driveStick.rooGetY();
@@ -45,7 +66,6 @@ public class OI {
 	public boolean getOperatorButton(int button){
 		return operatorStick.getRawButton(button);
 	}
-	
 	
 	
 	//Gyro Functions:
@@ -75,31 +95,34 @@ public class OI {
 	}
 	
 	
-	public OI() {
-		driveStick = new RooJoystick(RobotMap.driveStickPort);
-		operatorStick = new RooJoystick(RobotMap.operatorStickPort);
-		frontBumperLimitSwitch = new DigitalInput(RobotMap.FRONT_BUMBER_PORT);
-		leftWingLimitSwitch = new DigitalInput(RobotMap.LEFT_WING_SWITCH_PORT);
-		rightWingLimitSwitch = new DigitalInput(RobotMap.RIGHT_WING_SWITCH_PORT);
-		forkLiftBottomSwitch = new DigitalInput(RobotMap.FL_BOTTOM_SWITCH_PORT);
-		rd = new RooDashboard();
-		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
-
-	}
+	
 	
 	
 	public void init (){
-		//This stuff has to happen ouside the constructor because they reference OI
+		//This stuff has to happen outside the constructor because they reference OI
 		lockRotation = new JoystickButton (driveStick, RobotMap.lockRotationButton[RobotMap.chipsDickType]);
 		lockRotation.whenPressed(new RooSwitchDriveMode());
 		lockRotation.toggleWhenPressed(new RooDriveLocked());
 		gyro = new RooGyroscope(RobotMap.gyroPort);
 		stackTote = new JoystickButton (driveStick, RobotMap.StackToteButton[RobotMap.chipsDickType]);
 		stackTote.whenPressed(new RooStackTote());
+		bumpRight = new JoystickButton (operatorStick, RobotMap.BumpRight);
+		bumpRight.whenPressed(new RooRightBump ());
+		bumpLeft = new JoystickButton (operatorStick, RobotMap.BumpLeft);
+		bumpLeft.whenPressed(new RooLeftBump ());
+		bumpBack = new JoystickButton (operatorStick, RobotMap.BumpBack);
+		bumpBack.whenPressed(new RooBackBump ());
+		bumpFw = new JoystickButton (operatorStick, RobotMap.BumpFw);
+		bumpFw.whenPressed(new RooFwBump ());
+		
+		
 	}
 	//
 	public void iterate (){
 		schmencoder.iterate();
+		rd.putBoolean("Forklift limit switch: ", this.getForkLiftBottomLimitSwitch());
+		rd.putBoolean("Left wing limit switch: ", this.getLeftWingLimitSwitch());
+		rd.putNumber("Yaw", getYaw());
 	}
 	public void resetSchmencoder() {
 		schmencoder.reset();

@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 
 
+
+import org.usfirst.frc.team4373.input.RooCamera;
 import org.usfirst.frc.team4373.robot.commands.*;
 import org.usfirst.frc.team4373.robot.subsystems.*;
 
@@ -20,11 +22,13 @@ import org.usfirst.frc.team4373.robot.subsystems.*;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	private static String exceptionString = "";
 
 	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
 	public static RooForklift rooForkLift = new RooForklift();
 	public static RooIntake rooIntake = new RooIntake ();
 	public static RooWings wings = new RooWings ();
+	public static RooCamera rooCamera;
     RooAutonBase autonomousCommand;
 
     /**
@@ -32,34 +36,44 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
+    	
         // instantiate the command used for the autonomous period jri
     	CommandBase.init();
+//    	CommandBase.getOI().rd.putBoolean("mason sucks", true);
+//    	rooCamera = new RooCamera("cam2");
+//    	rooCamera.start();
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		CommandBase.getOI().iterate();
+//		if (CommandBase.getOI().getOperatorButton(6))
+//			new RooSexyAnimals().start();
+//		CommandBase.getOI().rd.putBoolean("Forklift limit switch: ", CommandBase.getOI().getForkLiftBottomLimitSwitch());
 	}
 
     public void autonomousInit() {
+//    	rooCamera = new RooCamera();
+//    	rooCamera.start();
         // schedule the autonomous command (example)
-    	int mode = (int)CommandBase.getOI().rd.rooGetNumber("Auton mode: ", 0.0D);
+    	try{
+    		
+    	int mode = (int)CommandBase.getOI().rd.rooGetNumber("Auton mode: ", 3);
     	switch(mode) {
-    	case 0:
-    		autonomousCommand = new RooAutonRight();
-    		break;
     	case 1:
-    		autonomousCommand = new RooAutonMid();
+    		autonomousCommand = new RooAutonGrabBinDriveBack();
     		break;
     	case 2:
-    		autonomousCommand = new RooAutonLeft();
-    		break;
-    	case 7:
-    		autonomousCommand = new RooSexyAnimals();
+    		autonomousCommand = new RooAutonGrabBinDriveRight();
     		break;
     	default:
     		autonomousCommand = new RooAutonMid();
     	}
-        if (autonomousCommand != null) autonomousCommand.start();
+        	if (autonomousCommand instanceof RooAutonBase) autonomousCommand.start();
+    	}catch (Exception e){
+//    		this.exceptionString += "\n" + e.getMessage();
+    		e.printStackTrace();
+    	}
         
     }
 
@@ -67,11 +81,17 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-        CommandBase.getOI().iterate();
+    	try{
+    		Scheduler.getInstance().run();
+    		CommandBase.getOI().iterate();
+    	}catch (Exception e){
+    		e.printStackTrace();
+    	}
     }
 
     public void teleopInit() {
+//    	rooCamera = new RooCamera();
+//    	rooCamera.start();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
@@ -79,22 +99,28 @@ public class Robot extends IterativeRobot {
     	CommandBase.getOI().resetGyro();
         if (autonomousCommand != null) autonomousCommand.cancel();
     }
-
+    public boolean getEnabled() {
+    	return this.isEnabled();
+    }
     /**
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-
+//    	rooCamera.c_stop();
     }
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-    	
-        Scheduler.getInstance().run();
-        CommandBase.getOI().iterate();
+//    	rooCamera.drawImage();
+    	try{
+    		Scheduler.getInstance().run();
+    		CommandBase.getOI().iterate();
+    	}catch (Exception e){
+    		e.printStackTrace();
+    	}
     }
     
     /**

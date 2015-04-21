@@ -7,7 +7,10 @@ public class RooAutonBase extends CommandBase {
 	protected OI oi;
 	
 	RooAutonBase() {
+		super();
 		requires(Robot.wings);
+		requires(Robot.rooDrivetrain);
+		requires(Robot.rooForkLift);
 	}
 	
 	@Override

@@ -29,12 +29,12 @@ public class RooMoveForklift extends CommandBase {
 			lockPosition = 0;
 			Robot.rooForkLift.moveToPosition(lockPosition);
 		}
-		else if (oi.getOperatorButton(RobotMap.FORKLIFT_P1)) { // Or something
-			lockPosition = RooForklift.p1;
-			Robot.rooForkLift.moveToPosition(lockPosition);
-		}
 		else if (oi.getDriveStickButton(RobotMap.DriverLiftForkLift[RobotMap.chipsDickType])) {
 			Robot.rooForkLift.set(CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 1));
+			lockPosition = oi.getSchmencoderPosition();
+		}
+		else if (oi.getDriveStickButton(RobotMap.SlowUpButton[RobotMap.chipsDickType])) {
+			Robot.rooForkLift.set(CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 1) * CommandBase.getOI().rd.rooGetNumber("Slow Up Multiplier", .75));
 			lockPosition = oi.getSchmencoderPosition();
 		}
 		else if (oi.getDriveStickButton(RobotMap.DriverLowerForkLift[RobotMap.chipsDickType])) {
@@ -50,7 +50,8 @@ public class RooMoveForklift extends CommandBase {
 			lockPosition = oi.getSchmencoderPosition();
 		}
 		else{
-			Robot.rooForkLift.moveToPosition(lockPosition);
+			Robot.rooForkLift.set(0);
+			//Robot.rooForkLift.moveToPosition(lockPosition);
 		}
 	}
 

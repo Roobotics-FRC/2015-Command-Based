@@ -1,15 +1,18 @@
 package org.usfirst.frc.team4373.input;
 
 import org.usfirst.frc.team4373.robot.RobotMap;
+import org.usfirst.frc.team4373.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RooJoystick extends Joystick {
 	private double xThreshold, yThreshold, yawThreshold = 0.1;
+	private RooThrottleResponse rooThrottleResponse;
 	
 	public RooJoystick(int port) {
 		super(port);
+		rooThrottleResponse = new RooThrottleResponse();
 	}
 	
 	public double getXThreshold() {
@@ -40,6 +43,9 @@ public class RooJoystick extends Joystick {
 	}
 	
 	public double rooGetY() {
+		if (CommandBase.getOI().rd.rooGetBoolean("Bob joystick: ", true)) {
+			return rooThrottleResponse.getThrottle(this.getRawAxis(1));
+		}
 		double axis = this.getRawAxis(1);
 		if (Math.abs(axis) > yThreshold) {
 			return Math.pow(axis,3);

@@ -62,31 +62,31 @@ public class RooDriveTrain {
 		return motorPower;
 	}
 	
-	double getForwardMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
-		//Cici is a genius and made these
-		//takes joystick axes and the angle the robot is at,
-		//returns joystick output as if we were point the joysick in a way to get the bot
-		//to drive in the direction we are pointing the legit joystick in
-		double z1 = Math.sqrt((x1 * x1) + (y1 * y1));
-		double b = Math.atan(y1/x1);
-		gyroAngle = (gyroAngle * Math.PI)/180;
-		double c = b+gyroAngle;
-		double y2 = Math.sin(c) * z1;
-		if (Math.abs(y2) < .001){
-			y2 = 0;
-		}
-		return y2;
-	}
+//	double getForwardMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
+//		//Cici is a genius and made these
+//		//takes joystick axes and the angle the robot is at,
+//		//returns joystick output as if we were point the joysick in a way to get the bot
+//		//to drive in the direction we are pointing the legit joystick in
+//		double z1 = Math.sqrt((x1 * x1) + (y1 * y1));
+//		double b = Math.atan(y1/x1);
+//		gyroAngle = (gyroAngle * Math.PI)/180;
+//		double c = b+gyroAngle;
+//		double y2 = Math.sin(c) * z1;
+//		if (Math.abs(y2) < .001){
+//			y2 = 0;
+//		}
+//		return y2;
+//	}
 	
-	double getRightMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
-		double z1 = Math.sqrt((x1 * x1) + (y1 * y1));
-		double b = Math.atan(y1/x1);
-		gyroAngle = (gyroAngle * Math.PI)/180;
-		double c = b + gyroAngle;
-		double x2 = Math.cos(c) * z1;
-		if (Math.abs(x2) < .001){
-			x2 = 0;
-		}
-		return x2;
-	}
+//	double getRightMagnitudeFromFieldwise (double x1, double y1, double gyroAngle){
+//		double z1 = Math.sqrt((x1 * x1) + (y1 * y1));
+//		double b = Math.atan(y1/x1);
+//		gyroAngle = (gyroAngle * Math.PI)/180;
+//		double c = b + gyroAngle;
+//		double x2 = Math.cos(c) * z1;
+//		if (Math.abs(x2) < .001){
+//			x2 = 0;
+//		}
+//		return x2;
+//	}
 }

@@ -19,12 +19,15 @@ public class RooForklift extends Subsystem {
 	public RooForklift() {
 		motorPair = new Talon(RobotMap.forkliftMotorPairPort);
 	}
-	public void moveToPosition(int position) {
+	public boolean moveToPosition(int position) {
 		int distanceFromTarget = CommandBase.getOI().getSchmencoderPosition() - position;
-		if (Math.abs(distanceFromTarget) > deadZone)
-			motorPair.set(-1 * CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 1) * (RooMath.getSign(distanceFromTarget)));
-		else
+		if (Math.abs(distanceFromTarget) > deadZone){
+			set(-0.95 * CommandBase.getOI().rd.rooGetNumber("Forklift Up Power", 1) * (RooMath.getSign(distanceFromTarget)));
+			return (false);
+		}else{
 			motorPair.set(0.0D);
+			return true;
+		}
 	}
 	@Override
 	protected void initDefaultCommand() {
@@ -32,7 +35,11 @@ public class RooForklift extends Subsystem {
 		
 	}
 	public void set(double val) {
-		motorPair.set(val);
+		if (val > 0 || !CommandBase.getOI().getForkLiftBottomLimitSwitch())
+			motorPair.set(-val);
+		else{
+			motorPair.set(0);
+		}
 	}
 	
 	public int getDirection(){
