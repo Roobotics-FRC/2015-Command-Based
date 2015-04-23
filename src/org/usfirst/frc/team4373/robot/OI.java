@@ -47,6 +47,7 @@ public class OI {
 		forkLiftBottomSwitch = new DigitalInput(RobotMap.FL_BOTTOM_SWITCH_PORT);
 		rd = new RooDashboard();
 		schmencoder = new RooSyntheticEncoder (RobotMap.HallyPort, 99, 0);
+		this.rd.putString("Autonomous Index Reference:", "1: Grab bin, drive back\n2: Grab bin, drive right\n3: Can burglers down, move back, move canburgler motors\n4: Can bruglers down, move back");
 
 	}
 	
