@@ -17,9 +17,9 @@ public class RobotMap {
 	public static int rightMotorPort = 0;
 	public static int strafeMotorPort = 2;
 	public static final int IntakeMotorPort = 3;
-	public static final int leftWingMotorPort = 6;
+	public static final int leftCanBurglerPort = 6;
 	public static final int forkliftMotorPairPort = 4;
-	public static final int rightWingMotorPort = 5;
+	public static final int rightCanBurglerPort = 5;
 	
 	//limit Switches
 	public static final int FL_BOTTOM_SWITCH_PORT = 4;

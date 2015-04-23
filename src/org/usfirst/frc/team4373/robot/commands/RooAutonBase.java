@@ -8,7 +8,7 @@ public class RooAutonBase extends CommandBase {
 	
 	RooAutonBase() {
 		super();
-		requires(Robot.wings);
+//		requires(Robot.wings);
 		requires(Robot.rooDrivetrain);
 		requires(Robot.rooForkLift);
 	}

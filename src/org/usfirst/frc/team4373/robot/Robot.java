@@ -27,7 +27,8 @@ public class Robot extends IterativeRobot {
 	public static RooDrivetrain rooDrivetrain = new RooDrivetrain();
 	public static RooForklift rooForkLift = new RooForklift();
 	public static RooIntake rooIntake = new RooIntake ();
-	public static RooWings wings = new RooWings ();
+	public static RooCanBurgler rooCanBurgler = new RooCanBurgler();
+//	public static RooWings wings = new RooWings ();
 	public static RooCamera rooCamera;
     RooAutonBase autonomousCommand;
 
