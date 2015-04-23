@@ -138,5 +138,19 @@ public class OI {
 		value =  (1 - ((value + 1)/2)); 
 		return value;
 	}
+	public double getOperatorLeftBinGrabber() {
+		if (operatorStick.getRawButton(RobotMap.LEFT_CANBURGLER_FORWARDS))
+			return 1.0D;
+		else if (operatorStick.getRawButton(RobotMap.LEFT_CANBURGLER_FORWARDS))
+			return -1.0D;
+		return 0.0D;
+	}
+	public double getOperatorRightBinGrabber() {
+		if (operatorStick.getRawButton(RobotMap.RIGHT_CANBURGLER_FORWARDS))
+			return 1.0D;
+		else if (operatorStick.getRawButton(RobotMap.RIGHT_CANBURGLER_BACKWARDS))
+			return -1.0D;
+		return 0.0D;
+	}
 }
 

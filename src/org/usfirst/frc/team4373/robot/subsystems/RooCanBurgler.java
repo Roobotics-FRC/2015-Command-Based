@@ -4,7 +4,7 @@ import org.usfirst.frc.team4373.robot.OI;
 import org.usfirst.frc.team4373.robot.RobotMap;
 import org.usfirst.frc.team4373.robot.commands.CommandBase;
 import org.usfirst.frc.team4373.robot.commands.RooAutonCanBurgler;
-
+import org.usfirst.frc.team4373.robot.commands.RooMoveBinGrabbers;
 
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,7 +18,7 @@ public class RooCanBurgler extends Subsystem {
 	@Override
 	protected void initDefaultCommand() {
 		// TODO Auto-generated method stub
-		setDefaultCommand(new RooAutonCanBurgler());
+		setDefaultCommand(new RooMoveBinGrabbers());
 
 	}
 

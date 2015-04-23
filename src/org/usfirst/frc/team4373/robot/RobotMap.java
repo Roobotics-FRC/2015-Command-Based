@@ -55,6 +55,10 @@ public class RobotMap {
 	public static final int BumpFw = 3;
 	public static final int BumpLeft = 4;
 	public static final int BumpBack = 2;
+	public static final int LEFT_CANBURGLER_FORWARDS = 6;
+	public static final int LEFT_CANBURGLER_BACKWARDS = 7;
+	public static final int RIGHT_CANBURGLER_FORWARDS = 6;
+	public static final int RIGHT_CANBURGLER_BACKWARDS = 7;
 	
     // If you are using multiple modules, make sure to define both the port
     // number and the module. For example you with a rangefinder:
