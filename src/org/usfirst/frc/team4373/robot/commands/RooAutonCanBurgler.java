@@ -11,13 +11,12 @@ public class RooAutonCanBurgler extends RooAutonBase {
 	long startE1 = 0L, startE2 = 0L;
 	boolean leaveDown = true;
 	
-	public RooAutonCanBurgler() {
-
+	public void setLeaveDown(boolean leaveDown) {
+		this.leaveDown = leaveDown;
 	}
-	
 	@Override
 	protected void initialize() {
-		leaveDown = this.oi.rd.rooGetBoolean("Leave bin grabbers down", true);
+		leaveDown = this.oi.rd.rooGetBoolean("Leave bin grabbers down", leaveDown);
 		startE1 = System.currentTimeMillis();
 	}
 	

@@ -67,6 +67,13 @@ public class Robot extends IterativeRobot {
     	case 2:
     		autonomousCommand = new RooAutonGrabBinDriveRight();
     		break;
+    	case 3:
+    		autonomousCommand = new RooAutonCanBurgler();
+    		break;
+    	case 4:
+    		autonomousCommand = new RooAutonCanBurgler();
+    		((RooAutonCanBurgler)autonomousCommand).setLeaveDown(false);
+    		break;
     	default:
     		autonomousCommand = new RooAutonMid();
     	}
