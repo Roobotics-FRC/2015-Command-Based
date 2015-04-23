@@ -9,7 +9,7 @@ public class RooAutonCanBurgler extends RooAutonBase {
  */
 	
 	long startE1 = 0L, startE2 = 0L;
-	
+	boolean leaveDown = true;
 	
 	public RooAutonCanBurgler() {
 
@@ -17,6 +17,7 @@ public class RooAutonCanBurgler extends RooAutonBase {
 	
 	@Override
 	protected void initialize() {
+		leaveDown = this.oi.rd.rooGetBoolean("Leave bin grabbers down", true);
 		startE1 = System.currentTimeMillis();
 	}
 	
@@ -42,7 +43,7 @@ public class RooAutonCanBurgler extends RooAutonBase {
 			
 		} else if(event2) {
 			Robot.rooDrivetrain.setTank(this.oi.rd.rooGetNumber("DriveTrain Power", 0.65));
-		} else if(event3) {
+		} else if(event3 && leaveDown) {
 			event3 = !Robot.rooCanBurgler.moveLeftUntilSwitch() && !Robot.rooCanBurgler.moveRightUntilSwitch();
 		}
 		
